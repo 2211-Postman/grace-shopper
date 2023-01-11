@@ -6,7 +6,7 @@ import Products from "../products/Products";
  * COMPONENT
  */
 const Home = (props) => {
-  const username = useSelector((state) => state.auth.me.username);
+  const username = useSelector((state) => state.auth.me.email);
 
   return (
     <div>
