@@ -8,7 +8,7 @@ import { CardActionArea } from "@mui/material";
 import { usdFormatter } from "../../helpers";
 
 export default function ProductsCard({ product, onClick }) {
-  const { productId, productName, brand, price, imageUrl } = product;
+  const { productId, productName, brand, price, imageURL } = product;
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea
@@ -21,8 +21,8 @@ export default function ProductsCard({ product, onClick }) {
         <CardMedia
           component="img"
           sx={{ width: 200 }}
-          image={imageUrl}
-          alt="Campus Photo"
+          image={imageURL}
+          alt="Sneaker Photo"
         />
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="p" color="grey">
