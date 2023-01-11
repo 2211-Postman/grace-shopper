@@ -6,22 +6,20 @@ const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 5;
 
 const User = db.define("user", {
-  username: {
-    type: Sequelize.STRING,
-    unique: true,
-    // allowNull: false,
-  },
   password: {
     type: Sequelize.STRING,
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    validate: { notEmpty: true, isEmail: true },
+    validate: { isEmail: true },
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
+  },
+  isGuest: {
+    type: Sequelize.BOOLEAN,
   },
 });
 
@@ -42,8 +40,8 @@ User.prototype.generateToken = function () {
 /**
  * classMethods
  */
-User.authenticate = async function ({ username, email, password }) {
-  const user = await this.findOne(email ? { email } : { username });
+User.authenticate = async function ({ email, password }) {
+  const user = await this.findOne({ email });
   if (!user || !(await user.correctPassword(password))) {
     const error = Error("Incorrect username/password");
     error.status = 401;

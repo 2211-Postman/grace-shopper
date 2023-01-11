@@ -27,10 +27,6 @@ module.exports = db.define("product", {
     allowNull: false,
     validate: { notEmpty: true },
   },
-  availability: {
-    type: Sequelize.STRING,
-    defaultValue: "OUT OF STOCK",
-  },
   description: { type: Sequelize.TEXT, defaultValue: "" },
   stockCount: {
     type: Sequelize.INTEGER,
