@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { authenticate } from '../../app/store';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { authenticate } from "../../app/store";
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -15,19 +15,19 @@ const AuthForm = ({ name, displayName }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
-    const username = evt.target.username.value;
+    const email = evt.target.email.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
+    dispatch(authenticate({ email, password, method: formName }));
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="username">
-            <small>Username</small>
+          <label htmlFor="email">
+            <small>Email</small>
           </label>
-          <input name="username" type="text" />
+          <input name="email" type="text" />
         </div>
         <div>
           <label htmlFor="password">
