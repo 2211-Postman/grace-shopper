@@ -6,8 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 export default function ProductsCard({ product, onClick }) {
-  const { productId, productName, brand, imageUrl } = product;
+  const { productId, productName, brand, price, imageUrl } = product;
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea
@@ -29,6 +34,9 @@ export default function ProductsCard({ product, onClick }) {
           </Typography>
           <Typography component="div" variant="p">
             {productName}
+          </Typography>
+          <Typography component="div" variant="p" color="grey">
+            {`${formatter.format(price)}`}
           </Typography>
         </CardContent>
       </CardActionArea>

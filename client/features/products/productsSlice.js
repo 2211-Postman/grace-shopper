@@ -9,6 +9,7 @@ function getSampleProducts() {
     productId: null,
     productName: "AIR JORDAN 7 RETRO 'BLACK OLIVE'",
     brand: "Air Jordan",
+    price: 999999.0,
     imageUrl: "https://cdn.flightclub.com/2600/TEMPLATE/347629/1.jpg",
   };
   let products = Array(8)
@@ -67,8 +68,8 @@ export const selectUniqueProducts = (state) => {
   // filter out all the different size and color options
   // for the all products view
   let products = state.products.all.map((x) => {
-    const { productId, productName, brand, imageUrl, ...rest } = x;
-    return { productId, productName, brand, imageUrl };
+    const { productId, productName, brand, price, imageUrl, ...rest } = x;
+    return { productId, productName, brand, price, imageUrl };
   });
   products = [...new Set(products)];
   return products;
