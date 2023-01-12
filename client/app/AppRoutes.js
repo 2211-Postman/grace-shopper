@@ -6,6 +6,7 @@ import Home from "../features/home/Home";
 import Products from "../features/products/Products";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
+import SingleProduct from "../features/singleProduct/SingleProduct";
 /**
  * COMPONENT
  */
@@ -37,6 +38,7 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
+          <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       )}
