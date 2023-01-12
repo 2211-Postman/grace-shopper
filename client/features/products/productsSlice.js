@@ -28,8 +28,8 @@ export const selectUniqueProducts = (state) => {
   // filter out all the different size and color options
   // for the all products view
   let products = state.products.all.map((x) => {
-    const { productId, productName, brand, price, imageURL, ...rest } = x;
-    return { productId, productName, brand, price, imageURL };
+    const { id, productName, brand, price, imageURL, ...rest } = x;
+    return { id, productName, brand, price, imageURL };
   });
   products = [...new Set(products)];
   return products;

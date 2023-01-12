@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product },
+  models: { User, Product, Order },
 } = require("../server/db");
 
 /**
@@ -12,6 +12,9 @@ const {
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
+
+  //sample Order
+  const orders = await Promise.all([Order.create({}), Order.create({})]);
 
   // Creating Users
   const users = await Promise.all([
