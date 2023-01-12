@@ -5,8 +5,8 @@ import { Grid, Typography, Container } from "@mui/material";
 import { Stack } from "@mui/material";
 
 // import { selectCart, removeItemfromCart } from "./cartSlice";
-import CartCard from "./cartCard";
-import CartSummary from "./cartSummary";
+import CartCard from "./CartCard";
+import CartSummary from "./CartSummary";
 
 function getSampleCart() {
   const cartObj = {
