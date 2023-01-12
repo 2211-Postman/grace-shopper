@@ -6,9 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import { usdFormatter } from "../../helpers";
+import { useNavigate } from "react-router-dom";
 
-export default function ProductsCard({ product, onClick }) {
+export default function ProductsCard({ product }) {
   const { productId, productName, brand, price, imageURL } = product;
+  const navigate = useNavigate();
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea
@@ -16,12 +18,14 @@ export default function ProductsCard({ product, onClick }) {
           display: "flex",
           flexDirection: "column",
         }}
-        onClick={(e) => onClick(productId)}
+        onClick={() => {
+          navigate(`/products/${productId}`);
+        }}
       >
         <CardMedia
           component="img"
           sx={{ width: 200 }}
-          image={imageURL}
+          image={imageURL[0]}
           alt="Sneaker Photo"
         />
         <CardContent sx={{ flex: "1 0 auto" }}>

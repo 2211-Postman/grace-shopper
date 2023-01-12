@@ -33,8 +33,9 @@ module.exports = db.define("product", {
     defaultValue: 0,
   },
   imageURL: {
-    type: Sequelize.STRING,
-    defaultValue:
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: [
       "https://m.media-amazon.com/images/I/71x61brbckL._AC_UX500_.jpg",
+    ],
   },
 });

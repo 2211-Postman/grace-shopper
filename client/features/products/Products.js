@@ -6,7 +6,6 @@ import { fetchAllProductsAsync, selectUniqueProducts } from "./productsSlice";
 import ProductsCard from "./ProductsCard";
 
 const Products = () => {
-  const navigate = useNavigate();
   const products = useSelector(selectUniqueProducts);
   const dispatch = useDispatch();
 
@@ -17,17 +16,13 @@ const Products = () => {
     fetchData();
   }, [dispatch]);
 
-  function onClick(id) {
-    navigate(`/products/${id}/`);
-  }
-
   return (
     <Container>
       <Grid container spacing={3} columns={8}>
         {products && products.length
           ? products.map((product) => (
               <Grid item xs={8} sm={4} md={2} key={product.productId}>
-                <ProductsCard product={product} onClick={onClick} />
+                <ProductsCard product={product} />
               </Grid>
             ))
           : null}
