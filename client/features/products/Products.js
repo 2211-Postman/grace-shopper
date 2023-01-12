@@ -20,13 +20,12 @@ const Products = () => {
   function onClick(id) {
     navigate(`/products/${id}/`);
   }
-
   return (
     <Container>
       <Grid container spacing={3} columns={8}>
         {products && products.length
           ? products.map((product) => (
-              <Grid item xs={8} sm={4} md={2} key={product.productId}>
+              <Grid item xs={8} sm={4} md={2} key={product.id}>
                 <ProductsCard product={product} onClick={onClick} />
               </Grid>
             ))

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -8,7 +7,7 @@ import { CardActionArea } from "@mui/material";
 import { usdFormatter } from "../../helpers";
 
 export default function ProductsCard({ product, onClick }) {
-  const { productId, productName, brand, price, imageURL } = product;
+  const { id, productName, brand, price, imageURL } = product;
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea
@@ -16,7 +15,7 @@ export default function ProductsCard({ product, onClick }) {
           display: "flex",
           flexDirection: "column",
         }}
-        onClick={(e) => onClick(productId)}
+        onClick={(e) => onClick(id)}
       >
         <CardMedia
           component="img"
