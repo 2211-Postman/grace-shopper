@@ -6,7 +6,7 @@ import Home from "../features/home/Home";
 import Products from "../features/products/Products";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
-import SingleProduct from "../features/SingleProducts/SingleProduct";
+import SingleProduct from "../features/singleProduct/SingleProduct";
 /**
  * COMPONENT
  */
