@@ -14,34 +14,15 @@ export const fetchAllProductsAsync = createAsyncThunk(
   }
 );
 
-export const fetchProductAsync = createAsyncThunk(
-  "singleProduct",
-  async (id) => {
-    try {
-      let { data } = await axios.get(`/api/products/${id}`);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
 const productsSlice = createSlice({
   name: "products",
-  initialState: { all: [], single: {} },
+  initialState: { all: [] },
   extraReducers: (builder) => {
     builder.addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
       state.all = action.payload;
     });
-    builder.addCase(fetchProductAsync.fulfilled, (state, action) => {
-      state.single = action.payload;
-    });
   },
 });
-
-export const selectSingleProduct = (state) => {
-  return state.products.single;
-};
 
 export const selectUniqueProducts = (state) => {
   // filter out all the different size and color options

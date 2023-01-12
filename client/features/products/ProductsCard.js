@@ -20,7 +20,7 @@ export default function ProductsCard({ product, onClick }) {
         <CardMedia
           component="img"
           sx={{ width: 200 }}
-          image={imageURL}
+          image={imageURL[0]}
           alt="Sneaker Photo"
         />
         <CardContent sx={{ flex: "1 0 auto" }}>
