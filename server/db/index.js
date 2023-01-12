@@ -12,7 +12,7 @@ Order.belongsTo(User);
 Order.hasMany(OrderDetails);
 OrderDetails.belongsTo(Order);
 OrderDetails.hasMany(Product);
-Product.belongsTo(OrderDetails);
+Product.hasMany(OrderDetails);
 
 //associations could go here!
 

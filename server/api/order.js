@@ -24,11 +24,31 @@ router.get("/:orderId", async (req, res, next) => {
   }
 });
 
+// router.post("/", async (req, res, next) => {
+//   try {
+//     res.json(
+//       await Order.create(req.body, {
+//         include: OrderDetails,
+//       })
+//     );
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.post("/", async (req, res, next) => {
   try {
-    res.json(await Order.create(req.body));
-  } catch (err) {
-    next(err);
+    console.log("//////////", req.body);
+    const { orderDetailsParamsList, ...orderParams } = req.body;
+    const order = await Order.create(orderParams);
+    for (let i = 0; i < orderDetailsParamsList.length; i++) {
+      const params = orderDetailsParamsList[i];
+      const orderDetails = await OrderDetails.create(params);
+      await orderDetails.setOrder(order);
+    }
+    res.json(order);
+  } catch (error) {
+    next(error);
   }
 });
 
