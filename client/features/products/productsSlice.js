@@ -14,12 +14,29 @@ export const fetchAllProductsAsync = createAsyncThunk(
   }
 );
 
+export const deleteProductAsync = createAsyncThunk(
+  "deleteProduct",
+  async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/products/${id}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: "products",
   initialState: { all: [] },
   extraReducers: (builder) => {
     builder.addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
       state.all = action.payload;
+    });
+    builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
+      state.all = state.all.filter(
+        (product) => product.id !== action.payload.id
+      );
     });
   },
 });

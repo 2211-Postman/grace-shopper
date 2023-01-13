@@ -8,6 +8,7 @@ import { usdFormatter } from "../../helpers";
 
 export default function ProductsCard({ product, onClick }) {
   const { id, productName, brand, price, imageURL } = product;
+
   return (
     <Card sx={{ display: "flex", flexDirection: "column" }}>
       <CardActionArea
