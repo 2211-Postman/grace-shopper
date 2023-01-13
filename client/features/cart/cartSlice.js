@@ -7,9 +7,11 @@ const cartFromLocalStorage = JSON.parse(
 const _removeProductFromCart = (state, id) => {
   state.products = state.products.filter((product) => {
     if (product.id !== id) {
-      state.quantity -= 1;
       return true;
-    } else false;
+    } else {
+      state.quantity -= 1;
+      return false;
+    }
   });
   return state;
 };

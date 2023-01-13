@@ -12,14 +12,14 @@ export default function CartCard({
   goToProductOnClick,
   removeFromCartOnClick,
 }) {
-  const { productId, productName, size, color, totalPrice, imageURL } = item;
+  const { id, productName, size, color, totalPrice, imageURL } = item;
   return (
     <Card sx={{ display: "flex" }}>
-      <CardActionArea onClick={(e) => goToProductOnClick(productId)}>
+      <CardActionArea onClick={(e) => goToProductOnClick(id)}>
         <CardMedia
           component="img"
           sx={{ width: "100%" }}
-          image={imageURL}
+          image={imageURL[0]}
           alt="Sneaker Photo"
         />
       </CardActionArea>
@@ -58,7 +58,7 @@ export default function CartCard({
             </Typography>
           </Grid>
           <Grid item md={4}>
-            <CardActionArea onClick={(e) => removeFromCartOnClick(productId)}>
+            <CardActionArea onClick={(e) => removeFromCartOnClick(id)}>
               <Typography component="div" variant="p" fontSize="8px">
                 {"X Remove"}
               </Typography>
