@@ -8,6 +8,7 @@ import Users from "../features/users/Users";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
+import { selectCart } from "../features/cart/cartSlice";
 /**
  * COMPONENT
  */
@@ -15,6 +16,11 @@ import SingleProduct from "../features/singleProduct/SingleProduct";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
+
+  const cartState = useSelector(selectCart);
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cartState));
+  }, [cartState]);
 
   useEffect(() => {
     dispatch(me());
