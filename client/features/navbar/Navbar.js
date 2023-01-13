@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
+import { selectCart } from "../cart/cartSlice";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -12,6 +13,13 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const cart = useSelector(selectCart);
+  const [itemsInCart, setItemsInCart] = useState(cart.quantity);
+  useEffect(() => {
+    setItemsInCart(cart.quantity);
+  }, [cart]);
+
+  const cartDisplay = itemsInCart ? `Cart (${itemsInCart})` : "Cart";
   return (
     <div>
       <h1>FS-App-Template</h1>
@@ -32,7 +40,7 @@ const Navbar = () => {
             <Link to="/home">Home</Link>
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">{cartDisplay}</Link>
           </div>
         )}
       </nav>

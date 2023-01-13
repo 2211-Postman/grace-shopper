@@ -1,19 +1,22 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import { usdFormatter, getShippingCost } from "../../helpers";
 import { Typography, Container } from "@mui/material";
 
+const dollar = (x) => {
+  return usdFormatter.format(x);
+};
+
 export default function CartSummary({ cart, checkoutOnClick }) {
-  const totalCartCost = cart.reduce((a, x) => {
+  const totalCartCost = cart.products.reduce((a, x) => {
     a += x.totalPrice;
     return a;
   }, 0);
-  const shippingCost = getShippingCost(cart);
-  const displaySubTotal = usdFormatter.format(totalCartCost);
-  const displayShipping = usdFormatter.format(getShippingCost(cart));
-  const displayTotal = usdFormatter.format(totalCartCost + shippingCost);
+
+  const shipCost = cart.quantity > 0 ? getShippingCost(cart) : 0;
+  const total = totalCartCost + shipCost;
 
   return (
     <Card
@@ -32,7 +35,7 @@ export default function CartSummary({ cart, checkoutOnClick }) {
             Subtotal:
           </Typography>
           <Typography variant="body2" color="text.secondary" fontSize="10px">
-            {displaySubTotal}
+            {dollar(totalCartCost)}
           </Typography>
         </Container>
 
@@ -41,7 +44,7 @@ export default function CartSummary({ cart, checkoutOnClick }) {
             Estimated Shipping:
           </Typography>
           <Typography variant="body2" color="text.secondary" fontSize="10px">
-            {displayShipping}
+            {dollar(shipCost)}
           </Typography>
         </Container>
 
@@ -50,12 +53,12 @@ export default function CartSummary({ cart, checkoutOnClick }) {
             Total:
           </Typography>
           <Typography variant="body2" color="text.primary" fontSize="10px">
-            {displayTotal}
+            {dollar(total)}
           </Typography>
         </Container>
       </CardContent>
       <Button variant="contained" onClick={(e) => checkoutOnClick()}>
-        {`Checkout: ${displayTotal}`}
+        {`Checkout: ${dollar(total)}`}
       </Button>
     </Card>
   );
