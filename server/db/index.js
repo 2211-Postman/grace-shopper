@@ -11,7 +11,7 @@ User.hasMany(Order);
 Order.belongsTo(User);
 Order.hasMany(OrderDetails);
 OrderDetails.belongsTo(Order);
-OrderDetails.hasMany(Product);
+OrderDetails.belongsTo(Product);
 Product.hasMany(OrderDetails);
 
 //associations could go here!
