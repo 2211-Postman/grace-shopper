@@ -6,11 +6,11 @@ import Products from "../products/Products";
  * COMPONENT
  */
 const Home = (props) => {
-  const username = useSelector((state) => state.auth.me.email);
+  const firstName = useSelector((state) => state.auth.me.firstName);
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3>Welcome, {firstName}</h3>
       <Products />
     </div>
   );

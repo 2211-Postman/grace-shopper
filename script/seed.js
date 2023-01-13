@@ -18,12 +18,48 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ email: "warren@gmail.com", password: "123", isAdmin: true }),
-    User.create({ email: "robert@gmail.com", password: "123", isAdmin: true }),
-    User.create({ email: "sam@gmail.com", password: "123", isAdmin: true }),
-    User.create({ email: "jahed@gmail.com", password: "123", isAdmin: true }),
-    User.create({ email: "cody@gmail.com", password: "123", isAdmin: false }),
-    User.create({ email: "murphy@gmail.com", password: "123", isAdmin: false }),
+    User.create({
+      email: "warren@gmail.com",
+      password: "123",
+      firstName: "Warren",
+      lastName: "Chan",
+      isAdmin: true,
+    }),
+    User.create({
+      email: "robert@gmail.com",
+      password: "123",
+      firstName: "Robert",
+      lastName: "West",
+      isAdmin: true,
+    }),
+    User.create({
+      email: "sam@gmail.com",
+      password: "123",
+      firstName: "Sam",
+      lastName: "Ting",
+      isAdmin: true,
+    }),
+    User.create({
+      email: "jahed@gmail.com",
+      password: "123",
+      firstName: "Jahed",
+      lastName: "Prince",
+      isAdmin: true,
+    }),
+    User.create({
+      email: "cody@gmail.com",
+      password: "123",
+      firstName: "Cody",
+      lastName: "Bryant",
+      isAdmin: false,
+    }),
+    User.create({
+      email: "murphy@gmail.com",
+      password: "123",
+      firstName: "Murphy",
+      lastName: "James",
+      isAdmin: false,
+    }),
   ]);
 
   // Creating Products
