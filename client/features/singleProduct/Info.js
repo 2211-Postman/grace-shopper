@@ -10,7 +10,6 @@ const Info = ({ product }) => {
   const handleClick = () => {
     dispatch(addToCart({ ...product }));
   };
-  console.log(product, "PRODUCT");
 
   return (
     <Grid container direction="column" style={{ height: "100%" }}>
