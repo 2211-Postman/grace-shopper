@@ -5,20 +5,19 @@ const cartSlice = createSlice({
   initialState: {
     products: [],
     quantity: 0,
-    total: 0,
   },
   reducers: {
     addToCart: (state, action) => {
       state.quantity += 1;
       state.products.push(action.payload);
-      state.total += action.payload.price * action.payload.quantity;
+      // state.total += action.payload.price * action.payload.quantity;
     },
 
     removeproduct: (state, action) => {
-      const removeproduct = state.products.filter(
+      const removeProduct = state.products.filter(
         (product) => product.id !== action.payload
       );
-      state.products = removeproduct;
+      state.products = removeProduct;
     },
   },
 });
