@@ -102,6 +102,8 @@ const Info = ({ product }) => {
         </Select>
       </FormControl>
 
+      <br />
+
       <TextField
         error={error ? true : false}
         helperText={error}
