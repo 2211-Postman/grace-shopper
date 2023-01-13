@@ -15,6 +15,7 @@ import { selectCart } from "../features/cart/cartSlice";
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
   const dispatch = useDispatch();
 
   const cartState = useSelector(selectCart);
@@ -28,11 +29,18 @@ const AppRoutes = () => {
 
   return (
     <div>
-      {isLoggedIn ? (
+      {isLoggedIn && isAdmin ? (
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/products/:productId" element={<SingleProduct />} />
+        </Routes>
+      ) : isLoggedIn && !isAdmin ? (
+        <Routes>
+          <Route path="/*" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
