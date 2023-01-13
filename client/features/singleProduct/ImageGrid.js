@@ -8,7 +8,8 @@ export default function ImageGrid({ images, onSelect, selectedImage }) {
         <img
           key={index}
           src={image}
-          height={50}
+          height={40}
+          width={50}
           onClick={() => onSelect(index)}
           style={{
             border:
