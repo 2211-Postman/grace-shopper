@@ -18,9 +18,10 @@ const getQtyInCart = (id, cart) => {
 };
 
 const getErrMsg = (stockCount, qtyInCart) => {
-  let errMsg = `There are only ${stockCount} units of this sneaker left in stock`;
+  const isAre = stockCount === 1 ? "is" : "are";
+  let errMsg = `There ${isAre} only ${stockCount} unit(s) of this sneaker left in stock`;
   if (qtyInCart) {
-    errMsg = `You have ${qtyInCart} units in your cart. ` + errMsg;
+    errMsg = `You have ${qtyInCart} unit(s) in your cart. ` + errMsg;
   }
   return errMsg;
 };
@@ -38,13 +39,13 @@ const Info = ({ product }) => {
 
   useEffect(() => {
     const qty = getQtyInCart(id, cart);
-    setQtyInCart(getQtyInCart(id, cart));
+    setQtyInCart(qty);
     const isValid = qty < stockCount;
     if (isValid) setError(null);
     else {
       setError(getErrMsg(stockCount, qty));
     }
-  }, [cart]);
+  }, [cart, id]);
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);
@@ -104,7 +105,7 @@ const Info = ({ product }) => {
       <TextField
         error={error ? true : false}
         helperText={error}
-        label={"Quantity"}
+        label={`Quantity (in-stock: ${stockCount})`}
         value={numberOfItems}
         variant="outlined"
         onChange={(e) => handleChangeQty(e)}
