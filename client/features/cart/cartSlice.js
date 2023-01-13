@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const _removeProductFromCart = (state, id) => {
+  state.products = state.products.filter((product) => {
+    if (product.id !== id) {
+      state.quantity -= 1;
+      return true;
+    } else false;
+  });
+  return state;
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -12,11 +22,33 @@ const cartSlice = createSlice({
       state.products.push(action.payload);
       // state.total += action.payload.price * action.payload.quantity;
     },
-
-    removeProduct: (state, action) => {
-      state.products = state.products.filter(
-        (product) => product.id !== action.payload
-      );
+    addQuantityToCart: (state, action) => {
+      const id = action.payload.id;
+      const numberOfItems = action.payload.numberOfItems;
+      state.products = state.products.map((product) => {
+        if (product.id === id) {
+          product["numberOfItems"] += numberOfItems;
+        }
+        return product;
+      });
+    },
+    editQuantityInCart: (state, action) => {
+      const id = action.payload.id;
+      const numberOfItems = action.payload.numberOfItems;
+      if (numberOfItems === 0) {
+        state = _removeProductFromCart(state, id);
+      } else {
+        state.products = state.products.map((product) => {
+          if (product.id === id) {
+            product["numberOfItems"] = numberOfItems;
+          }
+          return product;
+        });
+      }
+    },
+    removeProductFromCart: (state, action) => {
+      const id = action.payload;
+      state = _removeProductFromCart(state, id);
     },
   },
 });
@@ -26,4 +58,9 @@ export const selectCart = (state) => {
 };
 
 export const cartReducer = cartSlice.reducer;
-export const { addToCart, removeProduct } = cartSlice.actions;
+export const {
+  addToCart,
+  addQuantityToCart,
+  editQuantityInCart,
+  removeProductFromCart,
+} = cartSlice.actions;
