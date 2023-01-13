@@ -17,11 +17,14 @@ export default function UsersCard({ user, onClick }) {
         onClick={(e) => onClick(id)}
       >
         <CardContent sx={{ flex: "1 0 auto" }}>
-          <Typography component="div" variant="p" color="grey">
-            {`${(firstName, lastName)}`}
+          <Typography component="div" variant="p" color="primary.dark">
+            {`${firstName} ${lastName}`}
           </Typography>
-          <Typography component="div" variant="p">
+          <Typography component="div" variant="p" color="secondary.dark">
             {email}
+          </Typography>
+          <Typography component="div" variant="p" color="secondary.dark">
+            {isAdmin ? "Admin" : null}
           </Typography>
         </CardContent>
       </CardActionArea>

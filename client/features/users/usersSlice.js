@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const fetchAllUsersAsync = createAsyncThunk("allUsers", async () => {
   try {
@@ -22,7 +23,7 @@ const usersSlice = createSlice({
 });
 
 export const selectUsers = (state) => {
-  return state.users;
+  return state.users.all;
 };
 
 export default usersSlice.reducer;

@@ -20,6 +20,7 @@ const Users = () => {
   function onClick(id) {
     navigate(`/users/${id}/`);
   }
+
   return (
     <Container>
       <Grid container spacing={3} columns={8}>
