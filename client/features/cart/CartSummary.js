@@ -2,12 +2,8 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { usdFormatter, getShippingCost } from "../../helpers";
+import { dollar, getShippingCost } from "../../helpers";
 import { Typography, Container } from "@mui/material";
-
-const dollar = (x) => {
-  return usdFormatter.format(x);
-};
 
 export default function CartSummary({ cart, checkoutOnClick }) {
   const totalCartCost = cart.products.reduce((a, x) => {

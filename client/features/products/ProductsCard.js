@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-import { usdFormatter } from "../../helpers";
+import { dollar } from "../../helpers";
 
 export default function ProductsCard({ product, onClick }) {
   const { id, productName, brand, price, imageURL } = product;
@@ -31,7 +31,7 @@ export default function ProductsCard({ product, onClick }) {
             {productName}
           </Typography>
           <Typography component="div" variant="p" color="grey">
-            {`${usdFormatter.format(price)}`}
+            {`${dollar(price)}`}
           </Typography>
         </CardContent>
       </CardActionArea>
