@@ -1,19 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  Grid,
-  Typography,
-  Container,
-  Button,
-  FormControlLabel,
-  FormControl,
-  FormGroup,
-  FormLabel,
-  TextField,
-  InputLabel,
-  Input,
-} from "@mui/material";
+import { Grid, Typography, Container, Button } from "@mui/material";
 import { fetchAllProductsAsync, selectUniqueProducts } from "./productsSlice";
 import ProductsCard from "./ProductsCard";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -62,25 +50,10 @@ const Products = () => {
             ))
           : null}
 
-        {/* {isLoggedIn && isAdmin ? <CreateProduct /> : null} */}
+        {isLoggedIn && isAdmin ? <CreateProduct /> : null}
       </Grid>
     </Container>
   );
 };
 
 export default Products;
-
-// <form action="/somewhere.html">
-//   <FormGroup sx={{padding: 2, borderRadius: 2, border: '1px solid', borderColor: 'primary.main'}}>
-//   <TextField sx={{paddingBottom: 2}} name="specs" variant="outlined" placeholder="Specs..." />
-//   <FormLabel component="legend">Product</FormLabel>
-//   <FormGroup row sx={{paddingBottom: 2}}>
-//     <FormControlLabel control={<Checkbox name="laptop" value="yes" />} label="Laptop" />
-//     <FormControlLabel
-//       control={<Checkbox name="headset" value="yes" />}
-//       label="Head Set"
-//     />
-//   </FormGroup>
-//   <Button type="submit" variant="outlined">Submit</Button>
-//   </FormGroup>
-// </form>

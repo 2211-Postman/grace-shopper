@@ -14,6 +14,36 @@ export const fetchAllProductsAsync = createAsyncThunk(
   }
 );
 
+export const addProductAsync = createAsyncThunk(
+  "addProduct",
+  async ({
+    productName,
+    brand,
+    size,
+    color,
+    price,
+    description,
+    stockCount,
+    imageURL,
+  }) => {
+    try {
+      const { data } = await axios.post("/api/products", {
+        productName,
+        brand,
+        size,
+        color,
+        price,
+        description,
+        stockCount,
+        imageURL,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const deleteProductAsync = createAsyncThunk(
   "deleteProduct",
   async (id) => {

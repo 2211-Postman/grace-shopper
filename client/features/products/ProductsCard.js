@@ -11,23 +11,24 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { usdFormatter } from "../../helpers";
 
-export default function ProductsCard({
+const ProductsCard = ({
   product,
   onClick,
   handleDelete,
   isLoggedIn,
   isAdmin,
-}) {
+}) => {
   const { id, productName, brand, price, imageURL } = product;
 
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      {/* <CardActionArea
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-      > */}
+    <Card
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        alignItems: "center",
+      }}
+    >
       <CardMedia
         component="img"
         sx={{ width: 200 }}
@@ -59,7 +60,8 @@ export default function ProductsCard({
           </div>
         ) : null}
       </CardActions>
-      {/* </CardActionArea> */}
     </Card>
   );
-}
+};
+
+export default ProductsCard;
