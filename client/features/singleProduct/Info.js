@@ -102,7 +102,9 @@ const Info = ({ product }) => {
           <MenuItem value={size}>{size}</MenuItem>
         </Select>
       </FormControl>
+
       <br />
+
       <TextField
         error={error ? true : false}
         helperText={error}

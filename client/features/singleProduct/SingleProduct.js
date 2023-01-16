@@ -33,7 +33,7 @@ const SingleProduct = () => {
         <div>
           <Grid
             container
-            spacing={1}
+            spacing={5}
             style={{ maxWidth: 1100, margin: "0 auto" }}
           >
             <Grid item sm={1}>
