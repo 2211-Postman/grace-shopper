@@ -43,6 +43,8 @@ const cartSlice = createSlice({
       state.products = state.products.map((product) => {
         if (product.id === id) {
           product["numberOfItems"] += numberOfItems;
+          product["totalPrice"] =
+            product["numberOfItems"] * product["unitPrice"];
         }
         return product;
       });
@@ -56,6 +58,8 @@ const cartSlice = createSlice({
         state.products = state.products.map((product) => {
           if (product.id === id) {
             product["numberOfItems"] = numberOfItems;
+            product["totalPrice"] =
+              product["numberOfItems"] * product["unitPrice"];
           }
           return product;
         });

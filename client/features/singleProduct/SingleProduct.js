@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -33,7 +33,7 @@ const SingleProduct = () => {
         <div>
           <Grid
             container
-            spacing={1}
+            spacing={5}
             style={{ maxWidth: 1100, margin: "0 auto" }}
           >
             <Grid item sm={1}>

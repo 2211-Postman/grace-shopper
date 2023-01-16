@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
-import { usdFormatter } from "../../helpers";
+import { dollar } from "../../helpers";
 import { addToCart, addQuantityToCart } from "../cart/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart } from "../cart/cartSlice";
@@ -72,6 +72,7 @@ const Info = ({ product }) => {
       orderDetails["size"] = size;
       orderDetails["imageURL"] = product["imageURL"];
       orderDetails["numberOfItems"] = numberOfItems;
+      orderDetails["unitPrice"] = product["price"];
       orderDetails["totalPrice"] = numberOfItems * product["price"];
       dispatch(addToCart({ ...orderDetails }));
     }
@@ -85,7 +86,7 @@ const Info = ({ product }) => {
         <Typography variant="h4">{productName}</Typography>
         <Typography variant="subtitle1">{description}</Typography>
         <br />
-        <Typography variant="h5">{`${usdFormatter.format(price)}`}</Typography>
+        <Typography variant="h5">{`${dollar(price)}`}</Typography>
         <br />
       </Box>
 
@@ -102,6 +103,8 @@ const Info = ({ product }) => {
         </Select>
       </FormControl>
 
+      <br />
+
       <TextField
         error={error ? true : false}
         helperText={error}
@@ -110,7 +113,7 @@ const Info = ({ product }) => {
         variant="outlined"
         onChange={(e) => handleChangeQty(e)}
       />
-
+      <br />
       <Button
         onClick={handlePurchaseClick}
         variant="contained"
@@ -118,7 +121,7 @@ const Info = ({ product }) => {
         style={{ marginTop: "auto" }}
         disabled={error ? true : false}
       >
-        Purchase
+        ADD TO CART
       </Button>
     </Grid>
   );
