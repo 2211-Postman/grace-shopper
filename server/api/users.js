@@ -31,6 +31,29 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
+router.get("/:userId/orders/", async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: { userId: req.params.userId },
+    });
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:userId/orders/:orderId/", async (req, res, next) => {
+  try {
+    // const order = await Order.findAll({
+    //   where: { userId: req.params.userId, id: req.params.orderId },
+    // });
+    const order = await Order.findByPk(req.params.orderId);
+    res.json(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     res.json(await User.create(req.body));

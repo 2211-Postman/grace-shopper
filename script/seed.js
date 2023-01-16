@@ -14,7 +14,6 @@ async function seed() {
   console.log("db synced!");
 
   //sample Order
-  const orders = await Promise.all([Order.create({}), Order.create({})]);
 
   // Creating Users
   const users = await Promise.all([
@@ -60,6 +59,14 @@ async function seed() {
       lastName: "James",
       isAdmin: false,
     }),
+  ]);
+
+  //sample orders
+  const orders = await Promise.all([
+    Order.create({
+      userId: 1,
+    }),
+    Order.create({ userId: 1, purchased: true }),
   ]);
 
   // Creating Products
