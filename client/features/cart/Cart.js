@@ -65,6 +65,7 @@ const Cart = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
+        marginTop: "20px",
       }}
     >
       <Typography component="div" variant="p" align="center">
