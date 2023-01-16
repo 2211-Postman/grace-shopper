@@ -6,9 +6,11 @@ import Home from "../features/home/Home";
 import Products from "../features/products/Products";
 import Users from "../features/users/Users";
 import Cart from "../features/cart/Cart";
+import Checkout from "../features/checkout/Checkout";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import { selectCart } from "../features/cart/cartSlice";
+import { selectCheckout } from "../features/checkout/checkoutSlice";
 /**
  * COMPONENT
  */
@@ -21,6 +23,11 @@ const AppRoutes = () => {
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cartState));
   }, [cartState]);
+
+  const checkoutState = useSelector(selectCheckout);
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(checkoutState));
+  }, [checkoutState]);
 
   useEffect(() => {
     dispatch(me());
@@ -35,6 +42,7 @@ const AppRoutes = () => {
           <Route path="/users" element={<Users />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       ) : (
         <Routes>
@@ -49,6 +57,7 @@ const AppRoutes = () => {
           />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
     </div>
