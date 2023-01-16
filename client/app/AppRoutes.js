@@ -10,7 +10,6 @@ import Checkout from "../features/checkout/Checkout";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import { selectCart } from "../features/cart/cartSlice";
-import { selectCheckout } from "../features/checkout/checkoutSlice";
 /**
  * COMPONENT
  */
@@ -23,11 +22,6 @@ const AppRoutes = () => {
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cartState));
   }, [cartState]);
-
-  const checkoutState = useSelector(selectCheckout);
-  useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify(checkoutState));
-  }, [checkoutState]);
 
   useEffect(() => {
     dispatch(me());

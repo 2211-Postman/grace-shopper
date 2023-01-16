@@ -1,44 +1,22 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Grid, Typography, Container } from "@mui/material";
 import { Stack } from "@mui/material";
 
-// import { selectCheckout, removeItemfromCheckout } from "./checkoutSlice";
 import CheckoutCard from "./CheckoutCard";
 import CheckoutSummary from "./CheckoutSummary";
+import CheckoutReview from "./CheckoutReview";
 
-function getSampleCheckout() {
-  const checkoutObj = {
-    productId: 1,
-    numberOfItems: 1,
-    totalPrice: 500,
-    productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
-    brand: " Air Jordan",
-    size: 9,
-    color: "WHITE/VARSITY RED-BLACK",
-    imageURL:
-      "https://img.stadiumgoods.com/14/28/63/00/14286300_42937338_2048.jpg",
-  };
-  return Array(3).fill(checkoutObj);
-}
+import { selectCart } from "../cart/cartSlice.js";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // const checkout = useSelector(selectCheckout);
-  const checkout = getSampleCheckout();
-
+  const cart = useSelector(selectCart);
   function goToProductOnClick(productId) {
     navigate(`/products/${productId}/`);
   }
-
-  function removeFromCheckoutOnClick(productId) {
-    // dispatch(removeItemFromCheckout(productId));
-  }
-
-  const itemsInCheckout = checkout.length ? checkout.length : 0;
+  const itemsInCheckout = cart.quantity;
 
   return (
     <Container
@@ -57,15 +35,23 @@ const Checkout = () => {
       </Typography>
 
       <Grid container spacing={3} columns={2}>
-        <Grid item xs={2} sm={1} md={1} key={checkout.productId}>
+        <Grid item xs={2} sm={1} md={1}>
           <CheckoutCard />
         </Grid>
 
-        <Grid item xs={2} sm={1} md={1} key={checkout.productId}>
-          <CheckoutSummary
-            goToProductOnClick={goToProductOnClick}
-            checkout={checkout}
-          />
+        <Grid item xs={2} sm={1} md={1}>
+          <CheckoutReview cart={cart} />
+          <Stack>
+            {cart && cart.products && cart.products.length
+              ? cart.products.map((item) => (
+                  <CheckoutSummary
+                    key={item.id}
+                    item={item}
+                    goToProductOnClick={goToProductOnClick}
+                  />
+                ))
+              : null}
+          </Stack>
         </Grid>
       </Grid>
     </Container>

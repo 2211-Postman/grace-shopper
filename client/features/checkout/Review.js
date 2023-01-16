@@ -8,41 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { usdFormatter, getShippingCost } from "../../helpers";
 
-const products = [
-  {
-    productId: 1,
-    numberOfItems: 1,
-    price: 500,
-    productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
-    brand: " Air Jordan",
-    size: 9,
-    color: "WHITE/VARSITY RED-BLACK",
-    imageURL:
-      "https://img.stadiumgoods.com/14/28/63/00/14286300_42937338_2048.jpg",
-  },
-  {
-    productId: 2,
-    numberOfItems: 2,
-    productName: "YEEZY BOOST 350 V2 ZEBRA",
-    brand: "Adidas",
-    size: 9.5,
-    color: "WHITE/CBLACK/RED",
-    price: 615,
-    imageURL:
-      "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/012/original/105568_01.jpg.jpeg?action=crop&width=2000",
-  },
-  {
-    productId: 3,
-    numberOfItems: 1,
-    productName: "NMD_R1 PK",
-    brand: "Adidas",
-    size: 7,
-    color: "FOOTWEARWHITE/FOOTWEARWHITE/FO",
-    price: 200,
-    imageURL:
-      "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/929/556/original/151301_01.jpg.jpeg?action=crop&width=2000",
-  },
-];
 const addresses = [
   "1 Material-UI Drive",
   "Reactville",
@@ -76,25 +41,6 @@ function Review(props) {
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
-      {/* <List disablePadding>
-        {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.productName}>
-            <ListItemText
-              primary={product.productName}
-              secondary={product.color}
-            />
-            <Typography variant="body2">{`${usdFormatter.format(
-              product.price
-            )}`}</Typography>
-          </ListItem>
-        ))}
-        <ListItem className={classes.listItem}>
-          <ListItemText primary="Total" />
-          <Typography variant="subtitle1" className={classes.total}>
-            $34.06
-          </Typography>
-        </ListItem>
-      </List> */}
       <Grid container spacing={16}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
