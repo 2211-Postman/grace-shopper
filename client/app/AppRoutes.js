@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import { Container } from "@mui/material";
+
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import Products from "../features/products/Products";
@@ -28,11 +31,16 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <div>
+    <Container
+      sx={{
+        marginTop: "40px",
+      }}
+    >
       {isLoggedIn ? (
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/shop" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
@@ -54,7 +62,7 @@ const AppRoutes = () => {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
-    </div>
+    </Container>
   );
 };
 

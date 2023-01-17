@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Grid, Typography, Container } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import { fetchAllProductsAsync, selectUniqueProducts } from "./productsSlice";
 import ProductsCard from "./ProductsCard";
 
