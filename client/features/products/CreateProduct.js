@@ -45,7 +45,6 @@ const CreateProduct = () => {
       })
     );
     setProductName("");
-    setBrand("");
     setColor("");
     setPrice("");
     setDescription("");
@@ -55,6 +54,9 @@ const CreateProduct = () => {
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);
+  };
+  const handleChangeBrand = (event) => {
+    setBrand(event.target.value);
   };
 
   return (
@@ -73,14 +75,21 @@ const CreateProduct = () => {
           </FormControl>
 
           <FormControl>
-            <InputLabel htmlFor="brand">Brand</InputLabel>
-            <Input
-              id="brand"
-              aria-describedby="my-helper-text"
+            <InputLabel id="brand">Brand</InputLabel>
+            <Select
+              labelId="size"
               value={brand}
-              onChange={(event) => setBrand(event.target.value)}
-              required
-            />
+              label="Brand"
+              onChange={handleChangeBrand}
+            >
+              <MenuItem value={"Adidas"}>Adidas</MenuItem>
+              <MenuItem value={"Air Jordan"}>Air Jordan</MenuItem>
+              <MenuItem value={"Asics"}>Asics</MenuItem>
+              <MenuItem value={"New Balance"}>New Balance</MenuItem>
+              <MenuItem value={"Nike"}>Nike</MenuItem>
+              <MenuItem value={"Puma"}>Puma</MenuItem>
+              <MenuItem value={"Reebok"}>Reebok</MenuItem>
+            </Select>
           </FormControl>
 
           <FormControl>

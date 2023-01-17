@@ -31,7 +31,7 @@ const EditSingleProduct = ({ productId }) => {
   const [brand, setBrand] = useState(product.brand);
   const [size, setSize] = useState(product.size);
   const [color, setColor] = useState(product.color);
-  const [price, setPrice] = useState(price);
+  const [price, setPrice] = useState(product.price);
   const [description, setDescription] = useState(product.description);
   const [stockCount, setStockCount] = useState(product.stockCount);
   const [imageURL, setImageURL] = useState(product.imageURL);
@@ -55,17 +55,21 @@ const EditSingleProduct = ({ productId }) => {
         imageURL,
       })
     );
-    setProductName("");
-    setBrand("");
-    setColor("");
-    setPrice("");
-    setDescription("");
-    setStockCount("");
-    setImageURL("");
+    setProductName(productName);
+    setBrand(brand);
+    setColor(color);
+    setPrice(price);
+    setDescription(description);
+    setStockCount(stockCount);
+    setImageURL(imageURL);
   };
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);
+  };
+
+  const handleChangeBrand = (event) => {
+    setBrand(event.target.value);
   };
 
   return (
@@ -84,14 +88,21 @@ const EditSingleProduct = ({ productId }) => {
           </FormControl>
 
           <FormControl>
-            <InputLabel htmlFor="brand">Brand</InputLabel>
-            <Input
-              id="brand"
-              aria-describedby="my-helper-text"
+            <InputLabel id="brand">Brand</InputLabel>
+            <Select
+              labelId="size"
               value={brand}
-              onChange={(event) => setBrand(event.target.value)}
-              required
-            />
+              label="Brand"
+              onChange={handleChangeBrand}
+            >
+              <MenuItem value={"Adidas"}>Adidas</MenuItem>
+              <MenuItem value={"Air Jordan"}>Air Jordan</MenuItem>
+              <MenuItem value={"Asics"}>Asics</MenuItem>
+              <MenuItem value={"New Balance"}>New Balance</MenuItem>
+              <MenuItem value={"Nike"}>Nike</MenuItem>
+              <MenuItem value={"Puma"}>Puma</MenuItem>
+              <MenuItem value={"Reebok"}>Reebok</MenuItem>
+            </Select>
           </FormControl>
 
           <FormControl>
