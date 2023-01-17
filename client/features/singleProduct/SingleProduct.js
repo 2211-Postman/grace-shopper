@@ -51,7 +51,7 @@ const SingleProduct = () => {
               <MainImage src={product.imageURL[selectedImage]} />
             </Grid>
             <Grid item sm={6}>
-              <Info product={product} isAdmin={isAdmin} />
+              <Info product={product} />
             </Grid>
             {isLoggedIn && isAdmin ? (
               <EditSingleProduct productId={productId} />

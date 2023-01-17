@@ -90,7 +90,7 @@ const EditSingleProduct = ({ productId }) => {
           <FormControl>
             <InputLabel id="brand">Brand</InputLabel>
             <Select
-              labelId="size"
+              labelId="brand"
               value={brand}
               label="Brand"
               onChange={handleChangeBrand}
