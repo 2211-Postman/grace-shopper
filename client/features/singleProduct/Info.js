@@ -27,7 +27,8 @@ const getErrMsg = (stockCount, qtyInCart) => {
 };
 
 const Info = ({ product }) => {
-  const { id, productName, description, brand, price, stockCount } = product;
+  const { id, productName, description, brand, price, stockCount, color } =
+    product;
   const dispatch = useDispatch();
 
   const [size, setSize] = useState(product.size);
@@ -85,6 +86,7 @@ const Info = ({ product }) => {
       <Box mt={2}>
         <Typography variant="h4">{productName}</Typography>
         <Typography variant="subtitle1">{description}</Typography>
+        <Typography variant="overline">{color}</Typography>
         <br />
         <Typography variant="h5">{`${usdFormatter.format(price)}`}</Typography>
         <br />
