@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Container } from "@mui/material";
 import { fetchAllProductsAsync, selectUniqueProducts } from "./productsSlice";
 import ProductsCard from "./ProductsCard";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteProductAsync } from "./productsSlice";
+import CreateProduct from "./CreateProduct";
 
 const Products = () => {
   const navigate = useNavigate();
   const products = useSelector(selectUniqueProducts);
   const dispatch = useDispatch();
+
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,16 +26,31 @@ const Products = () => {
   function onClick(id) {
     navigate(`/products/${id}/`);
   }
+
+  const handleDelete = (id) => {
+    return async () => {
+      await dispatch(deleteProductAsync(id));
+    };
+  };
+
   return (
     <Container>
-      <Grid container spacing={3} columns={8}>
+      <Grid container spacing={2} columns={8}>
         {products && products.length
           ? products.map((product) => (
               <Grid item xs={8} sm={4} md={2} key={product.id}>
-                <ProductsCard product={product} onClick={onClick} />
+                <ProductsCard
+                  product={product}
+                  onClick={onClick}
+                  isLoggedIn={isLoggedIn}
+                  isAdmin={isAdmin}
+                  handleDelete={handleDelete}
+                />
               </Grid>
             ))
           : null}
+
+        {isLoggedIn && isAdmin ? <CreateProduct /> : null}
       </Grid>
     </Container>
   );
