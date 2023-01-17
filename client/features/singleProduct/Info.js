@@ -27,7 +27,7 @@ const getErrMsg = (stockCount, qtyInCart) => {
 };
 
 const Info = ({ product }) => {
-  const { id, productName, description, brand, price, stockCount, color } =
+  const { id, productName, description, brand, price, stockCount, color, sku } =
     product;
   const dispatch = useDispatch();
 
@@ -87,7 +87,8 @@ const Info = ({ product }) => {
       <Box mt={2}>
         <Typography variant="h4">{productName}</Typography>
         <Typography variant="subtitle1">{description}</Typography>
-        <Typography variant="overline">{color}</Typography>
+        <Typography variant="subtile2">{color}</Typography>
+        <Typography variant="subtitle2">SKU: {sku}</Typography>
         <br />
         <Typography variant="h5">{`${dollar(price)}`}</Typography>
         <br />

@@ -28,6 +28,7 @@ const EditSingleProduct = ({ productId }) => {
   const product = useSelector(selectProduct);
 
   const [productName, setProductName] = useState(product.productName);
+  const [sku, setSku] = useState(product.sku);
   const [brand, setBrand] = useState(product.brand);
   const [size, setSize] = useState(product.size);
   const [color, setColor] = useState(product.color);
@@ -46,6 +47,7 @@ const EditSingleProduct = ({ productId }) => {
       editSingleProductAsync({
         productId,
         productName,
+        sku,
         brand,
         size,
         color,
@@ -56,6 +58,7 @@ const EditSingleProduct = ({ productId }) => {
       })
     );
     setProductName(productName);
+    setSku(sku);
     setBrand(brand);
     setColor(color);
     setPrice(price);
@@ -83,6 +86,17 @@ const EditSingleProduct = ({ productId }) => {
               aria-describedby="my-helper-text"
               value={productName}
               onChange={(event) => setProductName(event.target.value)}
+              required
+            />
+          </FormControl>
+
+          <FormControl>
+            <InputLabel htmlFor="sku">SKU</InputLabel>
+            <Input
+              id="sku"
+              aria-describedby="my-helper-text"
+              value={sku}
+              onChange={(event) => setSku(event.target.value)}
               required
             />
           </FormControl>

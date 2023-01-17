@@ -18,6 +18,7 @@ export const editSingleProductAsync = createAsyncThunk(
   async ({
     productId,
     productName,
+    sku,
     brand,
     size,
     color,
@@ -29,6 +30,7 @@ export const editSingleProductAsync = createAsyncThunk(
     try {
       const { data } = await axios.put(`/api/products/${productId}`, {
         productName,
+        sku,
         brand,
         size,
         color,
