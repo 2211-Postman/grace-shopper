@@ -17,6 +17,7 @@ export const addProductAsync = createAsyncThunk(
   "addProduct",
   async ({
     productName,
+    sku,
     brand,
     size,
     color,
@@ -28,6 +29,7 @@ export const addProductAsync = createAsyncThunk(
     try {
       const { data } = await axios.post("/api/products", {
         productName,
+        sku,
         brand,
         size,
         color,

@@ -20,6 +20,7 @@ import {
 
 const CreateProduct = () => {
   const [productName, setProductName] = useState("");
+  const [sku, setSku] = useState("");
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -35,6 +36,7 @@ const CreateProduct = () => {
     dispatch(
       addProductAsync({
         productName,
+        sku,
         brand,
         size,
         color,
@@ -45,6 +47,7 @@ const CreateProduct = () => {
       })
     );
     setProductName("");
+    setSku("");
     setColor("");
     setPrice("");
     setDescription("");
@@ -70,6 +73,17 @@ const CreateProduct = () => {
               aria-describedby="my-helper-text"
               value={productName}
               onChange={(event) => setProductName(event.target.value)}
+              required
+            />
+          </FormControl>
+
+          <FormControl>
+            <InputLabel htmlFor="sku">SKU</InputLabel>
+            <Input
+              id="sku"
+              aria-describedby="my-helper-text"
+              value={sku}
+              onChange={(event) => setSku(event.target.value)}
               required
             />
           </FormControl>
