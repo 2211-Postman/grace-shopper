@@ -65,6 +65,7 @@ async function seed() {
   const products = await Promise.all([
     Product.create({
       productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
+      sku: "DZ5485612",
       brand: "Air Jordan",
       size: 9,
       color: "WHITE/VARSITY RED-BLACK",
@@ -82,6 +83,7 @@ async function seed() {
     }),
     Product.create({
       productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
+      sku: "DZ5485612",
       brand: "Air Jordan",
       size: 12,
       color: "WHITE/VARSITY RED-BLACK",
@@ -99,6 +101,7 @@ async function seed() {
     }),
     Product.create({
       productName: "AIR JORDAN 1 HIGH OG TS SP Travis Scott",
+      sku: "CD4487100",
       brand: "Air Jordan",
       size: 9,
       color: "SAIL/DARK MOCHA-UNIVERSITY RED",
@@ -115,7 +118,26 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "AIR JORDAN 3 RETRO SP WMNS A Ma Maniére",
+      sku: "DH3434110",
+      brand: "Air Jordan",
+      size: 10,
+      color: "WHITE/TAUPE-NATURAL",
+      price: 340,
+      description:
+        "The A Ma Maniére x women's Air Jordan 3 Retro SP 'Raised By Women' brings a premium build to its classic basketball construction. Made in collaboration with the Atlanta retailer, the shoe emerges with a tumbled leather construction on the upper, finished in white and complemented by grey suede on the collar, eyestay, heel and toe. The tongues includes mismatched co-branding, with a quilted inner collar and tongue lining supporting the fit. Underfoot, visible Air in the heel of the midsole provides cushioning, giving way to a rubber outsole for traction.",
+      stockCount: 2,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/056/093/849/original/690789_01.jpg.jpeg?action=crop&width=950",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/056/093/852/original/690789_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/056/093/855/original/690789_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/056/093/857/original/690789_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/056/093/859/original/690789_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "AIR JORDAN 4 RETRO OG WHITE CEMENT",
+      sku: "840606192",
       brand: "Air Jordan",
       size: 10,
       color: "WHITE/FIRE RED-BLACK-TECH GREY",
@@ -133,6 +155,7 @@ async function seed() {
     }),
     Product.create({
       productName: "AIR JORDAN 11 RETRO BRED 2019",
+      sku: "378037061",
       brand: "Air Jordan",
       size: 8.5,
       color: "BLACK/WHITE/VARSITY-RED",
@@ -141,8 +164,8 @@ async function seed() {
         "Bringing back an OG colorway, the Air Jordan 11 Retro 'Bred' 2019 features a familiar Chicago Bulls look. The shoe's upper is built with a mix of mesh and patent leather, all finished in black, save for the Varsity Red Jumpman and white '23.' Underfoot, a contrasting white midsole houses Air and a midfoot plate, while a Varsity Red rubber outsole provides traction and completes the look.",
       stockCount: 2,
       imageURL: [
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/046/084/992/original/478948_03.jpg.jpeg?action=crop&width=800",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/047/069/784/original/478948_01.jpg.jpeg?action=crop&width=800",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/046/084/992/original/478948_03.jpg.jpeg?action=crop&width=800",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/046/084/991/original/478948_02.jpg.jpeg?action=crop&width=800",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/046/084/999/original/478948_04.jpg.jpeg?action=crop&width=800",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/046/084/998/original/478948_06.jpg.jpeg?action=crop&width=2000",
@@ -151,6 +174,7 @@ async function seed() {
     }),
     Product.create({
       productName: "KOBE 6 PROTRO GRINCH",
+      sku: "CW2190300",
       brand: "Nike",
       size: 9,
       color: "GREEN APPLE/VOLT/CRIMSON/BLACK",
@@ -168,6 +192,7 @@ async function seed() {
     }),
     Product.create({
       productName: "KOBE 6 PROTRO GRINCH",
+      sku: "CW2190300",
       brand: "Nike",
       size: 10,
       color: "GREEN APPLE/VOLT/CRIMSON/BLACK",
@@ -185,6 +210,7 @@ async function seed() {
     }),
     Product.create({
       productName: "KOBE 5 PROTRO BRUCE LEE",
+      sku: "CD4991700",
       brand: "Nike",
       size: 9,
       color: "DEL SOL/METALLIC SILVER-COMET",
@@ -202,6 +228,7 @@ async function seed() {
     }),
     Product.create({
       productName: "KOBE 8 SYSTEM PYTHON",
+      sku: "555035300",
       brand: "Nike",
       size: 9,
       color: "SQDRN GREEN/CHLLNG RD-LGN BRWN",
@@ -218,7 +245,44 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "KOBE 8 SYSTEM CHRISTMAS",
+      sku: "555035030",
+      brand: "Nike",
+      size: 9.5,
+      color: "BLK/BRGHT CRMSN-FBRGLSS VVD SL",
+      price: 899,
+      description:
+        "Releasing in late December 2012, the Kobe 8 System 'Christmas' features a vibrant mix of colors on its Engineered Mesh upper. Although seasonally appropriate, the look is actually modeled after the rhinoceros viper. Accented by Bright Crimson on the Swoosh and laces, the speckled Lunarlon midsole gives way to a bright green outsole.",
+      stockCount: 6,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/216/824/original/13309_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/216/815/original/13309_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/216/816/original/13309_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/216/814/original/13309_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/216/819/original/13309_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "KOBE 9 ELITE LOW BEETHOVEN",
+      sku: "639045101",
+      brand: "Nike",
+      size: 11,
+      color: "WHITE/BLACK-WOLF GREY",
+      price: 549,
+      description:
+        "The Nike Kobe 9 Elite 'Beethoven' pays tribute to one of Kobe Bryant's many muses. Like the German composers music, the low-top features a timeless quality, thanks to a predominantly grey color scheme on the breathable Flyknit upper. Details include a carbon fiber heel counter for added stability and a Lunarlon midsole for responsive and lightweight cushioning.",
+      stockCount: 1,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/710/851/original/13010_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/710/853/original/13010_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/710/854/original/13010_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/710/856/original/13010_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/710/861/original/13010_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "LEBRON 8 RETRO SOUTH BEACH 2021",
+      sku: "CZ0328400",
       brand: "Nike",
       size: 8.5,
       color: "RETRO/PINK FLASH/FILAMENT GREEN/BLACK",
@@ -237,7 +301,26 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "LEBRON 9 BIG BANG 2022",
+      sku: "DH8006800",
+      brand: "Nike",
+      size: 12,
+      color: "TOTAL ORANGE/METALLIC SILVER-T",
+      price: 225,
+      description:
+        "LeBron James debuted this colorwary during the 2012 All-Star Game, featuring a space theme. Returning true to form, the LeBron 9 ‘Big Bang’ arrives in a bright orange hue, with the interior lining and insole display cosmic imagery, while the outsole glows in the dark. The upper features Hyperfuse technology while a large volume Max Air bag in the heel offers lightweight cushioning.",
+      stockCount: 3,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/957/686/original/897203_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/957/681/original/897203_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/957/678/original/897203_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/957/679/original/897203_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/957/680/original/897203_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "AIR YEEZY 2 NRG SOLAR RED",
+      sku: "508214006",
       brand: "Nike",
       size: 11.5,
       color: "BLACK/BLACK-SOLAR RED",
@@ -246,8 +329,8 @@ async function seed() {
         "Accented with special details crafted specifically for Kanye, the Air Yeezy 2 NRG ‘Solar Red’ shares a familiar color palette with its Air Yeezy ‘Blink’ predecessor, though the newer model stands out with a more refined silhouette. One feature carried over from the original Air Yeezy is the glow-in-the-dark outsole, which is lifted from the Air Challenge II. The sneaker also includes a molded rubber heel, anaconda textured side panel, and Egyptology references on the tongue and midfoot strap.",
       stockCount: 1,
       imageURL: [
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/963/579/original/12149_03.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/963/578/original/12149_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/963/579/original/12149_03.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/963/580/original/12149_04.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/963/583/original/12149_06.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/930/193/original/12149_08.jpg.jpeg?action=crop&width=2000",
@@ -255,6 +338,7 @@ async function seed() {
     }),
     Product.create({
       productName: "YEEZY BOOST 350 V2 ZEBRA",
+      sku: "CP9654",
       brand: "Adidas",
       size: 9.5,
       color: "WHITE/CBLACK/RED",
@@ -272,6 +356,7 @@ async function seed() {
     }),
     Product.create({
       productName: "YEEZY BOOST 350 V2 ZEBRA",
+      sku: "CP9654",
       brand: "Adidas",
       size: 7,
       color: "WHITE/CBLACK/RED",
@@ -289,6 +374,7 @@ async function seed() {
     }),
     Product.create({
       productName: "NMD_R1 PK",
+      sku: "BZ0221",
       brand: "Adidas",
       size: 7,
       color: "FOOTWEARWHITE/FOOTWEARWHITE/FO",

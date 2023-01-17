@@ -7,6 +7,11 @@ module.exports = db.define("product", {
     allowNull: false,
     validate: { notEmpty: true },
   },
+  sku: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: { notEmpty: true },
+  },
   brand: {
     type: Sequelize.STRING,
     allowNull: false,

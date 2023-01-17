@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+
+import { Container } from "@mui/material";
+
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import Products from "../features/products/Products";
 import Users from "../features/users/Users";
 import Cart from "../features/cart/Cart";
+import Checkout from "../features/checkout/Checkout";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import { selectCart, fetchUserCart } from "../features/cart/cartSlice";
@@ -17,6 +21,7 @@ const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const currentUserId = useSelector((state) => state.auth.me.id);
 
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,12 +44,25 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <div>
-      {isLoggedIn ? (
+    <Container
+      sx={{
+        marginTop: "40px",
+      }}
+    >
+      {isLoggedIn && isAdmin ? (
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/shop" element={<Home />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/products/:productId" element={<SingleProduct />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      ) : isLoggedIn && !isAdmin ? (
+        <Routes>
+          <Route path="/*" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
@@ -61,9 +79,10 @@ const AppRoutes = () => {
           />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       )}
-    </div>
+    </Container>
   );
 };
 

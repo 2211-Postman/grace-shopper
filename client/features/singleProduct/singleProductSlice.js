@@ -13,12 +13,48 @@ export const fetchSingleProductAsync = createAsyncThunk(
   }
 );
 
+export const editSingleProductAsync = createAsyncThunk(
+  "editSingleProduct",
+  async ({
+    productId,
+    productName,
+    sku,
+    brand,
+    size,
+    color,
+    price,
+    description,
+    stockCount,
+    imageURL,
+  }) => {
+    try {
+      const { data } = await axios.put(`/api/products/${productId}`, {
+        productName,
+        sku,
+        brand,
+        size,
+        color,
+        price,
+        description,
+        stockCount,
+        imageURL,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const singleProductSlice = createSlice({
   name: "singleProduct",
   initialState: {},
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSingleProductAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    builder.addCase(editSingleProductAsync.fulfilled, (state, action) => {
       return action.payload;
     });
   },

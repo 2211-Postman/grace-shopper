@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import EditSingleProduct from "./EditSingleProduct.js";
 
 import {
   fetchSingleProductAsync,
@@ -20,12 +21,15 @@ const SingleProduct = () => {
 
   const [selectedImage, setSelectedImage] = useState(0);
 
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
+
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(fetchSingleProductAsync(productId));
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, selectProduct]);
 
   return (
     <>
@@ -49,6 +53,9 @@ const SingleProduct = () => {
             <Grid item sm={6}>
               <Info product={product} />
             </Grid>
+            {isLoggedIn && isAdmin ? (
+              <EditSingleProduct productId={productId} />
+            ) : null}
           </Grid>
         </div>
       ) : null}

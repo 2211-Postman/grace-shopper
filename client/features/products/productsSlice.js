@@ -1,6 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { createSlice } from "@reduxjs/toolkit";
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "allProducts",
@@ -14,12 +13,64 @@ export const fetchAllProductsAsync = createAsyncThunk(
   }
 );
 
+export const addProductAsync = createAsyncThunk(
+  "addProduct",
+  async ({
+    productName,
+    sku,
+    brand,
+    size,
+    color,
+    price,
+    description,
+    stockCount,
+    imageURL,
+  }) => {
+    try {
+      const { data } = await axios.post("/api/products", {
+        productName,
+        sku,
+        brand,
+        size,
+        color,
+        price,
+        description,
+        stockCount,
+        imageURL,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const deleteProductAsync = createAsyncThunk(
+  "deleteProduct",
+  async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/products/${id}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const productsSlice = createSlice({
   name: "products",
   initialState: { all: [] },
   extraReducers: (builder) => {
     builder.addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
       state.all = action.payload;
+    });
+    builder.addCase(addProductAsync.fulfilled, (state, action) => {
+      state.all.push(action.payload);
+    });
+    builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
+      state.all = state.all.filter(
+        (product) => product.id !== action.payload.id
+      );
     });
   },
 });
