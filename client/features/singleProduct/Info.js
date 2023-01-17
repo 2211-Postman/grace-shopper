@@ -87,7 +87,7 @@ const Info = ({ product }) => {
       <Box mt={2}>
         <Typography variant="h4">{productName}</Typography>
         <Typography variant="subtitle1">{description}</Typography>
-        <Typography variant="subtile2">{color}</Typography>
+        <Typography variant="subtitle2">{color}</Typography>
         <Typography variant="subtitle2">SKU: {sku}</Typography>
         <br />
         <Typography variant="h5">{`${dollar(price)}`}</Typography>
