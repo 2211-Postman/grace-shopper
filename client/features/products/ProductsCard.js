@@ -47,12 +47,15 @@ const ProductsCard = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={(e) => onClick(id)}>
-          View
-        </Button>
-        {isLoggedIn && isAdmin ? (
+        {!isAdmin ? (
+          <Button size="small" onClick={(e) => onClick(id)}>
+            View
+          </Button>
+        ) : isLoggedIn && isAdmin ? (
           <div>
-            <Button size="small">Edit</Button>
+            <Button size="small" onClickCapture={(e) => onClick(id)}>
+              Edit
+            </Button>
             <Button
               startIcon={<DeleteIcon />}
               onClick={handleDelete(product.id)}

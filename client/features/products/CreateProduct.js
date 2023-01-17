@@ -161,7 +161,7 @@ const CreateProduct = () => {
               id="imageURL"
               aria-describedby="my-helper-text"
               value={imageURL}
-              onChange={(event) => setImageURL(event.target.value.split(" "))}
+              onChange={(event) => setImageURL(event.target.value.split(","))}
               required
             />
           </FormControl>
