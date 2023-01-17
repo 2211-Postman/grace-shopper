@@ -9,7 +9,7 @@ import {
   Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { usdFormatter } from "../../helpers";
+import { dollar } from "../../helpers";
 
 const ProductsCard = ({
   product,
@@ -43,7 +43,7 @@ const ProductsCard = ({
           {productName}
         </Typography>
         <Typography component="div" variant="p" color="grey">
-          {`${usdFormatter.format(price)}`}
+          {`${dollar(price)}`}
         </Typography>
       </CardContent>
       <CardActions>

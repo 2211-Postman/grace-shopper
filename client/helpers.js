@@ -1,7 +1,11 @@
-export const usdFormatter = new Intl.NumberFormat("en-US", {
+const usdFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
+
+export const dollar = (x) => {
+  return usdFormatter.format(x);
+};
 
 export const getShippingCost = (cart) => {
   // for now shipping costs are fixed

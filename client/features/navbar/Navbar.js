@@ -1,61 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../app/store";
+import { useSelector } from "react-redux";
 import { selectCart } from "../cart/cartSlice";
+
+import ResponsiveAppBar from "./ResponsiveAppBar";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const logoutAndRedirectHome = () => {
-    dispatch(logout());
-    navigate("/login");
-  };
 
   const cart = useSelector(selectCart);
   const [itemsInCart, setItemsInCart] = useState(cart.quantity);
   useEffect(() => {
     setItemsInCart(cart.quantity);
   }, [cart]);
+  const cartLabel = itemsInCart ? `Cart (${itemsInCart})` : "Cart";
 
-  const cartDisplay = itemsInCart ? `Cart (${itemsInCart})` : "Cart";
+  // Create page list for navbar
+  let pages = ["Shop", "cart"];
+  if (isLoggedIn) pages = pages.concat(["logout"]);
+  else pages = pages.concat(["login", "signup"]);
+  if (isAdmin) pages = ["users"].concat(pages);
+
+  const pageLabels = pages.map((x) => {
+    if (x === "cart") return cartLabel;
+    else return x;
+  });
+  const homeTitle = "Kicks";
+
   return (
-    <div>
-      <h1>FS-App-Template</h1>
-      <nav>
-        {isLoggedIn && isAdmin ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/users">Users</Link>
-            <Link to="/cart">{cartDisplay}</Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
-              Logout
-            </button>
-          </div>
-        ) : isLoggedIn && !isAdmin ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/cart">{cartDisplay}</Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
-              Logout
-            </button>
-          </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
-            <Link to="/cart">{cartDisplay}</Link>
-          </div>
-        )}
-      </nav>
-      <hr />
-    </div>
+    <ResponsiveAppBar
+      pages={pages}
+      pageLabels={pageLabels}
+      homeTitle={homeTitle}
+    />
   );
 };
 
