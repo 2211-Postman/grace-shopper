@@ -8,16 +8,28 @@ import Users from "../features/users/Users";
 import Cart from "../features/cart/Cart";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
-import { selectCart } from "../features/cart/cartSlice";
+import { selectCart, fetchUserCart } from "../features/cart/cartSlice";
 /**
  * COMPONENT
  */
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const currentUserId = useSelector((state) => state.auth.me.id);
+
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const fetchCart = async () => {
+      if (currentUserId) {
+        await dispatch(fetchUserCart(currentUserId));
+      }
+    };
+    fetchCart();
+  }, [dispatch, currentUserId]);
+
   const cartState = useSelector(selectCart);
+
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cartState));
   }, [cartState]);

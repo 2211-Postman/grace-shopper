@@ -1,6 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export const fetchUserCart = createAsyncThunk("user cart", async (userId) => {
+  try {
+    const { data } = await axios.get(`./api/orders/getCart/${userId}`);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const cartFromLocalStorage = JSON.parse(
   window.localStorage.getItem("cart") || '{"products": [],"quantity": 0}'
 );
@@ -16,18 +25,6 @@ const _removeProductFromCart = (state, id) => {
   });
   return state;
 };
-
-const fetchUserCart = createAsyncThunk("user cart", async ({ userId }) => {
-  const { data } = await axios.get(`./api/users/${userId}`);
-});
-
-const createOrderAsync = createAsyncThunk(
-  "create order from cart",
-  async ({ userId }) => {
-    const { data } = await axios.post("./api/orders", { userId });
-    return data;
-  }
-);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -69,6 +66,12 @@ const cartSlice = createSlice({
       const id = action.payload;
       state = _removeProductFromCart(state, id);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchUserCart.fulfilled, (state, action) => {
+      state.products = action.payload;
+      state.quantity = state.products.length;
+    });
   },
 });
 

@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product, Order },
+  models: { User, Product, Order, OrderDetails },
 } = require("../server/db");
 
 /**
@@ -59,14 +59,6 @@ async function seed() {
       lastName: "James",
       isAdmin: false,
     }),
-  ]);
-
-  //sample orders
-  const orders = await Promise.all([
-    Order.create({
-      userId: 1,
-    }),
-    Order.create({ userId: 1, purchased: true }),
   ]);
 
   // Creating Products
@@ -311,6 +303,30 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/929/550/original/151301_06.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/081/408/original/151301_08.jpg.jpeg?action=crop&width=2000",
       ],
+    }),
+  ]);
+
+  //sample orders
+  const orders = await Promise.all([
+    Order.create({
+      userId: 1,
+    }),
+    Order.create({ userId: 1, purchased: true }),
+  ]);
+
+  //sample orderDetails
+  const orderDetails = await Promise.all([
+    OrderDetails.create({
+      orderId: 1,
+      productId: 1,
+      numberOfItems: 5,
+      totalPrice: 100,
+    }),
+    OrderDetails.create({
+      orderId: 1,
+      productId: 10,
+      numberOfItems: 1,
+      totalPrice: 50,
     }),
   ]);
 
