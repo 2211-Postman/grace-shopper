@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Link } from "@mui/material";
 
 import { logout } from "../../app/store";
+import { emptyCart } from "../cart/cartSlice";
 
 function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
   };
 
   const logoutAndRedirectHome = () => {
+    dispatch(emptyCart());
     dispatch(logout());
     navigate("/login");
   };

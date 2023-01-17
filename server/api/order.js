@@ -37,12 +37,6 @@ router.get("/getCart/:userId/", async (req, res, next) => {
       //if theres no cart, create one for the user
       const user = await User.findByPk(req.params.userId);
       const newUserCart = await user.createOrder();
-      // const products = await OrderDetails.findAll({
-      //   include: {
-      //     model: Order,
-      //     where: { orderId: newUserCart.id },
-      //   },
-      // });
 
       res.json([]);
     }
@@ -68,8 +62,6 @@ router.get("/:orderId", async (req, res, next) => {
     const order = await Order.findByPk(req.params.orderId, {
       include: OrderDetails,
     });
-    console.log("order:", order);
-
     res.json(order);
   } catch (err) {
     next(err);
@@ -87,14 +79,11 @@ router.get("/:orderId/:orderDetailsId", async (req, res, next) => {
 
 router.post("/user/:userId/:productId", async (req, res, next) => {
   try {
-    //grab a user's unfulfilled cart/order
-    const existingCart = await Order.findOne({
-      where: {
-        userId: req.params.userId,
-        purchased: false,
-      },
+    //grab a user's unfulfilled cart/order or create a new one for them if it doesnt exist
+    const [existingCart, isNewCart] = await Order.findOrCreate({
+      where: { userId: req.params.userId, purchased: false },
     });
-    //
+
     const [orderDetails, isNewOrderDetail] = await OrderDetails.findOrCreate({
       where: {
         orderId: existingCart.id,
@@ -106,7 +95,7 @@ router.post("/user/:userId/:productId", async (req, res, next) => {
       },
     });
 
-    //if the product doesnt exist in cart/order yet
+    //if the product exists in cart/order, update quantity
     if (!isNewOrderDetail) {
       await OrderDetails.update(
         {
@@ -135,22 +124,6 @@ router.post("/user/:userId/:productId", async (req, res, next) => {
     next(err);
   }
 });
-
-///////////////////////psuedo code///////////////////////
-
-/*
-
-1. adding an item to DB: 
-
-get userId. if there is one, then
-  get existing order
-  add orderdetails
-  
-  else create new order(cart)
-
-  if no userId, then get/set cart from localStorage
-
-*/
 
 // router.post("/", async (req, res, next) => {
 //   try {

@@ -416,6 +416,18 @@ async function seed() {
       totalPrice: 50,
     }),
     OrderDetails.create({
+      orderId: 2,
+      productId: 4,
+      numberOfItems: 1,
+      totalPrice: 20,
+    }),
+    OrderDetails.create({
+      orderId: 2,
+      productId: 6,
+      numberOfItems: 2,
+      totalPrice: 40,
+    }),
+    OrderDetails.create({
       orderId: 3,
       productId: 8,
       numberOfItems: 1,
@@ -425,12 +437,6 @@ async function seed() {
 
   console.log(`seeded ${users.length} users and ${products.length} products`);
   console.log(`seeded successfully`);
-  // return {
-  //   users: {
-  //     cody: users[0],
-  //     murphy: users[1]
-  //   }
-  // }
 }
 
 /*
