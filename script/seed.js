@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Product, Order },
+  models: { User, Product, Order, OrderDetails },
 } = require("../server/db");
 
 /**
@@ -12,9 +12,6 @@ const {
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
-
-  //sample Order
-  const orders = await Promise.all([Order.create({}), Order.create({})]);
 
   // Creating Users
   const users = await Promise.all([
@@ -393,14 +390,53 @@ async function seed() {
     }),
   ]);
 
+  //sample orders
+  const orders = await Promise.all([
+    Order.create({
+      userId: 1,
+    }),
+    Order.create({ userId: 1, purchased: true }),
+    Order.create({
+      userId: 2,
+    }),
+  ]);
+
+  //sample orderDetails
+  const orderDetails = await Promise.all([
+    OrderDetails.create({
+      orderId: 1,
+      productId: 1,
+      numberOfItems: 5,
+      totalPrice: 100,
+    }),
+    OrderDetails.create({
+      orderId: 1,
+      productId: 10,
+      numberOfItems: 1,
+      totalPrice: 50,
+    }),
+    OrderDetails.create({
+      orderId: 2,
+      productId: 4,
+      numberOfItems: 1,
+      totalPrice: 20,
+    }),
+    OrderDetails.create({
+      orderId: 2,
+      productId: 6,
+      numberOfItems: 2,
+      totalPrice: 40,
+    }),
+    OrderDetails.create({
+      orderId: 3,
+      productId: 8,
+      numberOfItems: 1,
+      totalPrice: 87,
+    }),
+  ]);
+
   console.log(`seeded ${users.length} users and ${products.length} products`);
   console.log(`seeded successfully`);
-  // return {
-  //   users: {
-  //     cody: users[0],
-  //     murphy: users[1]
-  //   }
-  // }
 }
 
 /*

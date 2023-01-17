@@ -1,4 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchUserCart = createAsyncThunk(
+  "get user cart",
+  async (userId) => {
+    try {
+      const { data } = await axios.get(`./api/orders/getCart/${userId}`);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+// export const addToUserCartDB = createAsyncThunk("post user cart", async(userId, productId) =>{
+//   try {
+//     const {data} = await axios.post(`./api/orders/user/${userId}/${productId}`);
+//   }
+// })
 
 const cartFromLocalStorage = JSON.parse(
   window.localStorage.getItem("cart") || '{"products": [],"quantity": 0}'
@@ -56,6 +75,16 @@ const cartSlice = createSlice({
       const id = action.payload;
       state = _removeProductFromCart(state, id);
     },
+    emptyCart: (state, action) => {
+      state.products = [];
+      state.quantity = 0;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchUserCart.fulfilled, (state, action) => {
+      state.products = action.payload;
+      state.quantity = state.products.length;
+    });
   },
 });
 
@@ -69,4 +98,5 @@ export const {
   addQuantityToCart,
   editQuantityInCart,
   removeProductFromCart,
+  emptyCart,
 } = cartSlice.actions;

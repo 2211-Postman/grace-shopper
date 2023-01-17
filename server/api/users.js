@@ -31,6 +31,17 @@ router.get("/:userId", async (req, res, next) => {
   }
 });
 
+router.get("/:userId/orders/", async (req, res, next) => {
+  try {
+    const orders = await Order.findAll({
+      where: { userId: req.params.userId },
+    });
+    res.json(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/", async (req, res, next) => {
   try {
     res.json(await User.create(req.body));

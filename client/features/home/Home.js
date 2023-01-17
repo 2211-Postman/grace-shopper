@@ -7,7 +7,6 @@ import Products from "../products/Products";
  */
 const Home = (props) => {
   const firstName = useSelector((state) => state.auth.me.firstName);
-
   return (
     <div>
       <h3>Welcome, {firstName}</h3>

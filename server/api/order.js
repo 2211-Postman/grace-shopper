@@ -4,9 +4,53 @@ const {
 } = require("../db");
 module.exports = router;
 
+//get a user's existing cart items
+router.get("/getCart/:userId/", async (req, res, next) => {
+  try {
+    const cart = await Order.findOne({
+      include: { model: OrderDetails },
+      where: {
+        userId: req.params.userId,
+        purchased: false,
+      },
+    });
+    //if cart exists, get all the products in that cart
+    if (cart) {
+      const products = await OrderDetails.findAll({
+        where: { orderId: cart.id },
+        include: Product,
+      });
+      const newArr = await products.map((ele) => ({
+        id: ele.product["id"],
+        productName: ele.product["productName"],
+        color: ele.product["color"],
+        brand: ele.product["brand"],
+        imageURL: ele.product["imageURL"],
+        numberOfItems: ele.numberOfItems,
+        size: ele.product["size"],
+        unitPrice: ele.product["price"],
+        totalPrice: ele.numberOfItems * ele.product["price"],
+      }));
+
+      res.json(newArr);
+    } else {
+      //if theres no cart, create one for the user
+      const user = await User.findByPk(req.params.userId);
+      const newUserCart = await user.createOrder();
+
+      res.json([]);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+//all orders in db
 router.get("/", async (req, res, next) => {
   try {
-    const orders = await Order.findAll();
+    const orders = await Order.findAll({
+      include: OrderDetails,
+    });
     res.json(orders);
   } catch (err) {
     next(err);
@@ -24,33 +68,78 @@ router.get("/:orderId", async (req, res, next) => {
   }
 });
 
-// router.post("/", async (req, res, next) => {
-//   try {
-//     res.json(
-//       await Order.create(req.body, {
-//         include: OrderDetails,
-//       })
-//     );
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-router.post("/", async (req, res, next) => {
+router.get("/:orderId/:orderDetailsId", async (req, res, next) => {
   try {
-    console.log("//////////", req.body);
-    const { orderDetailsParamsList, ...orderParams } = req.body;
-    const order = await Order.create(orderParams);
-    for (let i = 0; i < orderDetailsParamsList.length; i++) {
-      const params = orderDetailsParamsList[i];
-      const orderDetails = await OrderDetails.create(params);
-      await orderDetails.setOrder(order);
-    }
+    const order = await OrderDetails.findByPk(req.params.orderDetailsId);
     res.json(order);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 });
+
+router.post("/user/:userId/:productId", async (req, res, next) => {
+  try {
+    //grab a user's unfulfilled cart/order or create a new one for them if it doesnt exist
+    const [existingCart, isNewCart] = await Order.findOrCreate({
+      where: { userId: req.params.userId, purchased: false },
+    });
+
+    const [orderDetails, isNewOrderDetail] = await OrderDetails.findOrCreate({
+      where: {
+        orderId: existingCart.id,
+        productId: req.params.productId,
+      },
+      defaults: {
+        numberOfItems: req.body.numberOfItems,
+        totalPrice: req.body.totalPrice,
+      },
+    });
+
+    //if the product exists in cart/order, update quantity
+    if (!isNewOrderDetail) {
+      await OrderDetails.update(
+        {
+          numberOfItems: req.body.numberOfItems + orderDetails.numberOfItems,
+          totalPrice:
+            Number(req.body.totalPrice) + Number(orderDetails.totalPrice),
+          productId: req.params.productId,
+          orderId: existingCart.id,
+        },
+        {
+          where: {
+            productId: req.params.productId,
+            orderId: existingCart.id,
+          },
+          returning: true,
+          plain: true,
+        }
+      );
+    }
+    const product = await Product.findByPk(req.params.productId, {
+      include: { model: OrderDetails },
+      where: { orderId: existingCart.id },
+    });
+    res.status(201).json(product);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// router.post("/", async (req, res, next) => {
+//   try {
+//     console.log("//////////", req.body);
+//     const { orderDetailsParamsList, ...orderParams } = req.body;
+//     const order = await Order.create(orderParams);
+//     for (let i = 0; i < orderDetailsParamsList.length; i++) {
+//       const params = orderDetailsParamsList[i];
+//       const orderDetails = await OrderDetails.create(params);
+//       await orderDetails.setOrder(order);
+//     }
+//     res.json(order);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.put("/:orderId", async (req, res, next) => {
   try {
