@@ -4,8 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import { dollar, getShippingCost } from "../../helpers";
 import { Typography, Container } from "@mui/material";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  myCustomClass: { marginTop: theme.spacing.unit * 2 },
+}));
 
 export default function CartSummary({ cart, checkoutOnClick }) {
+  const classes = useStyles();
   const totalCartCost = cart.products.reduce((a, x) => {
     a += x.totalPrice;
     return a;
@@ -16,6 +22,7 @@ export default function CartSummary({ cart, checkoutOnClick }) {
 
   return (
     <Card
+      className={classes.myCustomClass}
       sx={{
         display: "flex",
         flexDirection: "column",
