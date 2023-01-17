@@ -13,8 +13,6 @@ async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
 
-  //sample Order
-
   // Creating Users
   const users = await Promise.all([
     User.create({
@@ -398,6 +396,9 @@ async function seed() {
       userId: 1,
     }),
     Order.create({ userId: 1, purchased: true }),
+    Order.create({
+      userId: 2,
+    }),
   ]);
 
   //sample orderDetails
@@ -413,6 +414,12 @@ async function seed() {
       productId: 10,
       numberOfItems: 1,
       totalPrice: 50,
+    }),
+    OrderDetails.create({
+      orderId: 3,
+      productId: 8,
+      numberOfItems: 1,
+      totalPrice: 87,
     }),
   ]);
 
