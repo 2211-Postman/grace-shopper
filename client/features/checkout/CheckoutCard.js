@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-
 import {
   Typography,
   CssBaseline,
@@ -87,7 +86,6 @@ class CheckoutCard extends React.Component {
   render() {
     const { classes } = this.props;
     const { activeStep } = this.state;
-    console.log(activeStep);
     return (
       <React.Fragment>
         <CssBaseline />
