@@ -2,13 +2,9 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { usdFormatter, getShippingCost } from "../../helpers";
+import { dollar, getShippingCost } from "../../helpers";
 import { Typography, Container } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
-
-const dollar = (x) => {
-  return usdFormatter.format(x);
-};
 
 const useStyles = makeStyles((theme) => ({
   myCustomClass: { marginTop: theme.spacing.unit * 2 },

@@ -11,7 +11,7 @@ function PaymentForm() {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
-      <Grid container spacing={24}>
+      <Grid container columns={12}>
         <Grid item xs={12} md={6}>
           <TextField required id="cardName" label="Name on card" fullWidth />
         </Grid>
@@ -30,7 +30,7 @@ function PaymentForm() {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={10}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveCard" value="yes" />}
             label="Remember credit card details for next time"

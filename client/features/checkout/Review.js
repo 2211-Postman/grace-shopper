@@ -41,13 +41,17 @@ function Review(props) {
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
-      <Grid container spacing={16}>
+      <Grid container columns={12}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(", ")}</Typography>
+          <Typography gutterBottom variant="subtitle2">
+            John Smith
+          </Typography>
+          <Typography gutterBottom variant="subtitle2">
+            {addresses.join(", ")}
+          </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
@@ -57,10 +61,14 @@ function Review(props) {
             {payments.map((payment) => (
               <React.Fragment key={payment.name}>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
+                  <Typography variant="subtitle2" gutterBottom>
+                    {payment.name}
+                  </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
+                  <Typography variant="subtitle2" gutterBottom>
+                    {payment.detail}
+                  </Typography>
                 </Grid>
               </React.Fragment>
             ))}
