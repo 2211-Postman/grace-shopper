@@ -6,9 +6,9 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export default function UsersCard({ user, onClick }) {
-  const { id, email, firstName, lastName, isAdmin, isGuest } = user;
+  const { id, email, firstName, lastName, isAdmin } = user;
   return (
-    <Card sx={{ display: "flex", flexDirection: "column" }}>
+    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <CardActionArea
         sx={{
           display: "flex",
