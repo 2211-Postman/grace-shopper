@@ -9,15 +9,6 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   myCustomClass: { marginTop: theme.spacing.unit },
-  listItem: {
-    padding: `${theme.spacing.unit}px 0`,
-  },
-  total: {
-    fontWeight: "700",
-  },
-  title: {
-    marginTop: theme.spacing.unit * 2,
-  },
 }));
 
 function CheckoutSummary({ goToProductOnClick, item }) {
@@ -28,7 +19,7 @@ function CheckoutSummary({ goToProductOnClick, item }) {
   return (
     <Card className={classes.myCustomClass} sx={{ display: "flex" }}>
       <CardActionArea
-        sx={{ width: "20%" }}
+        sx={{ width: "15%" }}
         onClick={(e) => goToProductOnClick(id)}
       >
         <CardMedia

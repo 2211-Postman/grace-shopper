@@ -68,7 +68,12 @@ const Cart = () => {
         marginTop: "20px",
       }}
     >
-      <Typography component="div" variant="p" align="center">
+      <Typography
+        component="div"
+        sx={{ fontWeight: "bold" }}
+        variant="p"
+        align="center"
+      >
         {`Shopping Cart (${itemsInCart})`}
       </Typography>
       <Grid container spacing={3} columns={2}>

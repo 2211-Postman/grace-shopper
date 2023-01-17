@@ -8,6 +8,7 @@ import { Grid, Typography } from "@mui/material";
 
 import EditCartItemForm from "./EditCartItemForm";
 import { dollar } from "../../helpers";
+import { makeStyles } from "@material-ui/core";
 
 const createQtyOptions = (stockCount) => {
   const options = {};
@@ -16,6 +17,9 @@ const createQtyOptions = (stockCount) => {
   }
   return options;
 };
+const useStyles = makeStyles((theme) => ({
+  myCustomClass: { marginTop: theme.spacing.unit * 2 },
+}));
 
 export default function CartCard({
   item,
@@ -36,9 +40,14 @@ export default function CartCard({
     imageURL,
   } = item;
 
+  const classes = useStyles();
+
   return (
-    <Card sx={{ display: "flex" }}>
-      <CardActionArea onClick={(e) => goToProductOnClick(id)}>
+    <Card className={classes.myCustomClass} sx={{ display: "flex" }}>
+      <CardActionArea
+        sx={{ width: "20%" }}
+        onClick={(e) => goToProductOnClick(id)}
+      >
         <CardMedia
           component="img"
           sx={{ width: "100%" }}
@@ -57,27 +66,27 @@ export default function CartCard({
       >
         <Grid container spacing={1} columns={8}>
           <Grid item md={6}>
-            <Typography component="div" variant="p" fontSize="8px">
+            <Typography component="div" variant="p" fontSize="10px">
               {productName}
             </Typography>
           </Grid>
           <Grid item md={2}>
-            <Typography component="div" variant="p" fontSize="8px">
+            <Typography component="div" variant="p" fontSize="10px">
               {`${dollar(totalPrice)}`}
             </Typography>
           </Grid>
         </Grid>
-        <Typography component="div" variant="p" fontSize="8px" color="grey">
+        <Typography component="div" variant="p" fontSize="9px" color="grey">
           {color}
         </Typography>
-        <Typography component="div" variant="p" fontSize="8px" color="grey">
+        <Typography component="div" variant="p" fontSize="9px" color="grey">
           {`Size: ${size}`}
         </Typography>
-        <Typography component="div" variant="p" fontSize="8px">
+        <Typography component="div" variant="p" fontSize="9px">
           {`Unit Price: ${dollar(unitPrice)}`}
         </Typography>
 
-        <Typography component="div" variant="p" fontSize="8px">
+        <Typography component="div" variant="p" fontSize="10px">
           {`Quantity: ${numberOfItems}`}
         </Typography>
 

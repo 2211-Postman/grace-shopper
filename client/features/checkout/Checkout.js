@@ -26,7 +26,7 @@ const Checkout = () => {
     >
       <Typography
         component="div"
-        variant="h5"
+        variant="h6"
         sx={{ fontWeight: "bold" }}
         align="center"
       >

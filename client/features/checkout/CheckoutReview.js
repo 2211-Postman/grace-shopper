@@ -12,15 +12,6 @@ const dollar = (x) => {
 
 const useStyles = makeStyles((theme) => ({
   myCustomClass: { marginTop: theme.spacing.unit * 2 },
-  listItem: {
-    padding: `${theme.spacing.unit}px 0`,
-  },
-  total: {
-    fontWeight: "700",
-  },
-  title: {
-    marginTop: theme.spacing.unit * 2,
-  },
 }));
 
 export default function CheckoutReview({ cart }) {
