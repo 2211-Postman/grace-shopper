@@ -45,7 +45,8 @@ const Info = ({ product }) => {
     else {
       setError(getErrMsg(stockCount, qty));
     }
-  }, [cart, id]);
+    setSize(product.size);
+  }, [cart, id, product.size]);
 
   const handleChangeSize = (event) => {
     setSize(event.target.value);

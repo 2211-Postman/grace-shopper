@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addProductAsync } from "./productsSlice";
-import AddIcon from "@mui/icons-material/Add";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  editSingleProductAsync,
+  fetchSingleProductAsync,
+} from "./singleProductSlice.js";
+
 import {
   Grid,
   Typography,
@@ -17,23 +20,31 @@ import {
   MenuItem,
   Fab,
 } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import { selectProduct } from "./singleProductSlice.js";
 
-const CreateProduct = () => {
-  const [productName, setProductName] = useState("");
-  const [brand, setBrand] = useState("");
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [stockCount, setStockCount] = useState("");
-  const [imageURL, setImageURL] = useState("");
-
+const EditSingleProduct = ({ productId }) => {
   const dispatch = useDispatch();
+  const product = useSelector(selectProduct);
 
-  const handleSubmit = (event) => {
+  const [productName, setProductName] = useState(product.productName);
+  const [brand, setBrand] = useState(product.brand);
+  const [size, setSize] = useState(product.size);
+  const [color, setColor] = useState(product.color);
+  const [price, setPrice] = useState(price);
+  const [description, setDescription] = useState(product.description);
+  const [stockCount, setStockCount] = useState(product.stockCount);
+  const [imageURL, setImageURL] = useState(product.imageURL);
+
+  useEffect(() => {
+    dispatch(fetchSingleProductAsync(productId));
+  }, [dispatch]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(
-      addProductAsync({
+    await dispatch(
+      editSingleProductAsync({
+        productId,
         productName,
         brand,
         size,
@@ -165,8 +176,8 @@ const CreateProduct = () => {
             />
           </FormControl>
 
-          <Fab size="small" color="primary" aria-label="add" type="submit">
-            {<AddIcon />}
+          <Fab size="small" color="primary" aria-label="edit" type="submit">
+            {<EditIcon />}
           </Fab>
         </FormGroup>
       </form>
@@ -174,4 +185,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default EditSingleProduct;
