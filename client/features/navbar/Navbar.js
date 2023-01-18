@@ -25,7 +25,7 @@ const Navbar = () => {
     if (x === "cart") return cartLabel;
     else return x;
   });
-  const homeTitle = "Kicks";
+  const homeTitle = "Sole Quest";
 
   return (
     <ResponsiveAppBar

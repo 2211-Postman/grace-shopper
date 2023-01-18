@@ -207,9 +207,11 @@ const CreateProduct = () => {
             />
           </FormControl>
 
-          <Fab size="medium" color="primary" aria-label="add" type="submit">
-            {<AddIcon />}
-          </Fab>
+          <FormControl>
+            <Fab size="small" color="primary" aria-label="add" type="submit">
+              {<AddIcon />}
+            </Fab>
+          </FormControl>
         </FormGroup>
       </form>
     </Grid>
