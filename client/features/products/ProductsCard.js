@@ -27,6 +27,7 @@ const ProductsCard = ({
         flexDirection: "column",
         height: "100%",
         textAlign: "center",
+        alignItems: "center",
       }}
     >
       <CardActionArea
