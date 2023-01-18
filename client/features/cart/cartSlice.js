@@ -13,11 +13,22 @@ export const fetchUserCart = createAsyncThunk(
   }
 );
 
-// export const addToUserCartDB = createAsyncThunk("post user cart", async(userId, productId) =>{
-//   try {
-//     const {data} = await axios.post(`./api/orders/user/${userId}/${productId}`);
-//   }
-// })
+export const addToUserCartDB = createAsyncThunk(
+  "post user cart",
+  async (userId, product) => {
+    try {
+      if (userId) {
+        console.log("useId: ", userId, "product: ", product);
+        const { data } = await axios.post(
+          `./api/orders/user/${userId}/${product.id}`
+        );
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 
 const cartFromLocalStorage = JSON.parse(
   window.localStorage.getItem("cart") || '{"products": [],"quantity": 0}'
@@ -85,6 +96,9 @@ const cartSlice = createSlice({
       state.products = action.payload;
       state.quantity = state.products.length;
     });
+    // builder.addCase(addToUserCartDB.fulfilled, (state, action) => {
+    //   state.products.push(action.payload);
+    // });
   },
 });
 

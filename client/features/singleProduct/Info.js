@@ -7,7 +7,11 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 
 import { dollar } from "../../helpers";
-import { addToCart, addQuantityToCart } from "../cart/cartSlice";
+import {
+  addToCart,
+  addQuantityToCart,
+  addToUserCartDB,
+} from "../cart/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart } from "../cart/cartSlice";
 
@@ -38,6 +42,8 @@ const Info = ({ product }) => {
 
   const cart = useSelector(selectCart);
 
+  const currentUserId = useSelector((state) => state.auth.me.id);
+
   useEffect(() => {
     const qty = getQtyInCart(id, cart);
     setQtyInCart(qty);
@@ -63,20 +69,23 @@ const Info = ({ product }) => {
   };
 
   const handlePurchaseClick = () => {
+    const orderDetails = {};
+    orderDetails["id"] = product["id"];
+    orderDetails["productName"] = product["productName"];
+    orderDetails["color"] = product["color"];
+    orderDetails["brand"] = product["brand"];
+    orderDetails["size"] = size;
+    orderDetails["imageURL"] = product["imageURL"];
+    orderDetails["numberOfItems"] = numberOfItems;
+    orderDetails["unitPrice"] = product["price"];
+    orderDetails["totalPrice"] = numberOfItems * product["price"];
     if (qtyInCart) {
       dispatch(addQuantityToCart({ id, numberOfItems }));
+      dispatch(addToUserCartDB(currentUserId, orderDetails));
     } else {
-      const orderDetails = {};
-      orderDetails["id"] = product["id"];
-      orderDetails["productName"] = product["productName"];
-      orderDetails["color"] = product["color"];
-      orderDetails["brand"] = product["brand"];
-      orderDetails["size"] = size;
-      orderDetails["imageURL"] = product["imageURL"];
-      orderDetails["numberOfItems"] = numberOfItems;
-      orderDetails["unitPrice"] = product["price"];
-      orderDetails["totalPrice"] = numberOfItems * product["price"];
       dispatch(addToCart({ ...orderDetails }));
+      console.log("orderdetails in info", orderDetails);
+      dispatch(addToUserCartDB(currentUserId, orderDetails));
     }
   };
 
