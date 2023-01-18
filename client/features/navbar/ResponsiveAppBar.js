@@ -38,7 +38,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "secondary.dark" }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -51,7 +51,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               display: { xs: "none", md: "flex" },
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "white",
               textDecoration: "none",
             }}
           >
@@ -65,7 +65,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="white"
             >
               <MenuIcon />
             </IconButton>
@@ -116,7 +116,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               flexGrow: 1,
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "white",
               textDecoration: "none",
             }}
           >
