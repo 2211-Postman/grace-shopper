@@ -34,28 +34,28 @@ export default function CartSummary({ cart, checkoutOnClick }) {
         </Typography>
 
         <Container sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="body2" color="text.secondary" fontSize="10px">
+          <Typography variant="body2" color="text.secondary" fontSize="12px">
             Subtotal:
           </Typography>
-          <Typography variant="body2" color="text.secondary" fontSize="10px">
+          <Typography variant="body2" color="text.secondary" fontSize="12px">
             {dollar(totalCartCost)}
           </Typography>
         </Container>
 
         <Container sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="body2" color="text.secondary" fontSize="10px">
+          <Typography variant="body2" color="text.secondary" fontSize="12px">
             Estimated Shipping:
           </Typography>
-          <Typography variant="body2" color="text.secondary" fontSize="10px">
+          <Typography variant="body2" color="text.secondary" fontSize="12px">
             {dollar(shipCost)}
           </Typography>
         </Container>
 
         <Container sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="body2" color="text.primary" fontSize="10px">
+          <Typography variant="body2" color="text.primary" fontSize="12px">
             Total:
           </Typography>
-          <Typography variant="body2" color="text.primary" fontSize="10px">
+          <Typography variant="body2" color="text.primary" fontSize="12px">
             {dollar(total)}
           </Typography>
         </Container>
