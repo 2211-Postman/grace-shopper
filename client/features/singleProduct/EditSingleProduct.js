@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { selectProduct } from "./singleProductSlice.js";
+import { makeStyles } from "@material-ui/core/styles";
 
 const EditSingleProduct = ({ productId }) => {
   const dispatch = useDispatch();
@@ -75,10 +76,23 @@ const EditSingleProduct = ({ productId }) => {
     setBrand(event.target.value);
   };
 
+  const useStyles = makeStyles(() => ({
+    formStyle: {
+      width: "50%",
+      margin: "auto",
+      padding: 10,
+      border: "1px solid black",
+      paddingTop: 20,
+      boxShadow: "0px 0px 10px ",
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
     <Grid container spacing={0} columns={8} justifyContent="center">
       <form onSubmit={handleSubmit}>
-        <FormGroup>
+        <FormGroup sx={{ minWidth: 500 }} className={classes.formStyle}>
           <FormControl>
             <InputLabel htmlFor="productName">Product Name</InputLabel>
             <Input
@@ -175,6 +189,7 @@ const EditSingleProduct = ({ productId }) => {
               aria-describedby="my-helper-text"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
+              multiline
               required
             />
           </FormControl>
@@ -197,11 +212,12 @@ const EditSingleProduct = ({ productId }) => {
               aria-describedby="my-helper-text"
               value={imageURL}
               onChange={(event) => setImageURL(event.target.value.split(","))}
+              multiline
               required
             />
           </FormControl>
 
-          <Fab size="small" color="primary" aria-label="edit" type="submit">
+          <Fab size="medium" color="primary" aria-label="edit" type="submit">
             {<EditIcon />}
           </Fab>
         </FormGroup>
