@@ -34,32 +34,31 @@ const SingleProduct = () => {
   return (
     <>
       {product && Object.keys(product).length ? (
-        <div>
-          <Grid
-            container
-            spacing={5}
-            style={{ maxWidth: 1100, margin: "0 auto" }}
-          >
-            <Grid item sm={1}>
-              <ImageGrid
-                images={product.imageURL}
-                onSelect={setSelectedImage}
-                selectedImage={selectedImage}
-              />
-            </Grid>
-            <Grid item sm={5}>
-              <MainImage src={product.imageURL[selectedImage]} />
-            </Grid>
-            <Grid item sm={6}>
-              <Info product={product} />
-            </Grid>
-            {isLoggedIn && isAdmin ? (
-              <EditSingleProduct productId={productId} />
-            ) : null}
+        <Grid
+          container
+          spacing={5}
+          style={{ maxWidth: 1100, margin: "0 auto" }}
+        >
+          <Grid item sm={1}>
+            <ImageGrid
+              images={product.imageURL}
+              onSelect={setSelectedImage}
+              selectedImage={selectedImage}
+            />
           </Grid>
-        </div>
+          <Grid item sm={5}>
+            <MainImage src={product.imageURL[selectedImage]} />
+          </Grid>
+          <Grid item sm={6}>
+            <Info product={product} />
+          </Grid>
+        </Grid>
       ) : null}
-      ;
+      <Grid item sm={12}>
+        {isLoggedIn && isAdmin ? (
+          <EditSingleProduct productId={productId} />
+        ) : null}
+      </Grid>
     </>
   );
 };
