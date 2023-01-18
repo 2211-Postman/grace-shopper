@@ -136,6 +136,7 @@ const Info = ({ product }) => {
       >
         ADD TO CART
       </Button>
+      <br />
     </Grid>
   );
 };

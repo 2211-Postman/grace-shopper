@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { TOKEN } from "../auth/authSlice";
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "allProducts",
@@ -27,18 +28,31 @@ export const addProductAsync = createAsyncThunk(
     imageURL,
   }) => {
     try {
-      const { data } = await axios.post("/api/products", {
-        productName,
-        sku,
-        brand,
-        size,
-        color,
-        price,
-        description,
-        stockCount,
-        imageURL,
-      });
-      return data;
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.post(
+          "/api/products",
+          {
+            productName,
+            sku,
+            brand,
+            size,
+            color,
+            price,
+            description,
+            stockCount,
+            imageURL,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        return data;
+      } else {
+        return {};
+      }
     } catch (error) {
       console.log(error);
     }
@@ -49,7 +63,17 @@ export const deleteProductAsync = createAsyncThunk(
   "deleteProduct",
   async (id) => {
     try {
-      const { data } = await axios.delete(`/api/products/${id}`);
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.delete(`/api/products/${id}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        return data;
+      } else {
+        return {};
+      }
       return data;
     } catch (error) {
       console.log(error);

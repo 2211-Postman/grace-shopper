@@ -35,22 +35,27 @@ const Products = () => {
 
   return (
     <Container>
-      <Grid container spacing={2} columns={8}>
-        {products && products.length
-          ? products.map((product) => (
-              <Grid item xs={8} sm={4} md={2} key={product.id}>
-                <ProductsCard
-                  product={product}
-                  onClick={onClick}
-                  isLoggedIn={isLoggedIn}
-                  isAdmin={isAdmin}
-                  handleDelete={handleDelete}
-                />
-              </Grid>
-            ))
-          : null}
-
-        {isLoggedIn && isAdmin ? <CreateProduct /> : null}
+      <Grid container spacing={2} columns={10}>
+        <Grid item xs={10} sm={10} md={2}>
+          {isLoggedIn && isAdmin ? <CreateProduct /> : null}
+        </Grid>
+        <Grid item xs={10} sm={10} md={8}>
+          <Grid container spacing={2} columns={8}>
+            {products && products.length
+              ? products.map((product) => (
+                  <Grid item xs={8} sm={4} md={2} key={product.id}>
+                    <ProductsCard
+                      product={product}
+                      onClick={onClick}
+                      isLoggedIn={isLoggedIn}
+                      isAdmin={isAdmin}
+                      handleDelete={handleDelete}
+                    />
+                  </Grid>
+                ))
+              : null}
+          </Grid>
+        </Grid>
       </Grid>
     </Container>
   );

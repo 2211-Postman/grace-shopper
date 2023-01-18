@@ -2,10 +2,12 @@ const router = require("express").Router();
 const {
   models: { Order, OrderDetails, User, Product },
 } = require("../db");
+const { requireToken, isAdmin, isAdminOrSelf } = require("../gatekeeper");
+
 module.exports = router;
 
 //get a user's existing cart items
-router.get("/getCart/:userId/", async (req, res, next) => {
+router.get("/getCart/:userId/", requireToken, async (req, res, next) => {
   try {
     const cart = await Order.findOne({
       include: { model: OrderDetails },
@@ -46,7 +48,7 @@ router.get("/getCart/:userId/", async (req, res, next) => {
 });
 
 //all orders in db
-router.get("/", async (req, res, next) => {
+router.get("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const orders = await Order.findAll({
       include: OrderDetails,
@@ -57,73 +59,90 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/:orderId", async (req, res, next) => {
+router.get("/:orderId", requireToken, async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.orderId, {
       include: OrderDetails,
     });
-    res.json(order);
+    if (order.userId !== req.user.id) {
+      res.status(403).send("You cannot get other user's orders");
+    } else {
+      res.json(order);
+    }
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/:orderId/:orderDetailsId", async (req, res, next) => {
-  try {
-    const order = await OrderDetails.findByPk(req.params.orderDetailsId);
-    res.json(order);
-  } catch (err) {
-    next(err);
+router.get(
+  "/:orderId/:orderDetailsId",
+  requireToken,
+  async (req, res, next) => {
+    try {
+      const order = await OrderDetails.findByPk(req.params.orderDetailsId);
+      if (order.userId !== req.user.id) {
+        res.status(403).send("You cannot get other user's orders");
+      } else {
+        res.json(order);
+      }
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
-router.post("/user/:userId/:productId", async (req, res, next) => {
-  try {
-    //grab a user's unfulfilled cart/order or create a new one for them if it doesnt exist
-    const [existingCart, isNewCart] = await Order.findOrCreate({
-      where: { userId: req.params.userId, purchased: false },
-    });
+router.post(
+  "/user/:userId/:productId",
+  requireToken,
+  isAdminOrSelf,
+  async (req, res, next) => {
+    try {
+      //grab a user's unfulfilled cart/order or create a new one for them if it doesnt exist
+      const [existingCart, isNewCart] = await Order.findOrCreate({
+        where: { userId: req.params.userId, purchased: false },
+      });
 
-    const [orderDetails, isNewOrderDetail] = await OrderDetails.findOrCreate({
-      where: {
-        orderId: existingCart.id,
-        productId: req.params.productId,
-      },
-      defaults: {
-        numberOfItems: req.body.numberOfItems,
-        totalPrice: req.body.totalPrice,
-      },
-    });
-
-    //if the product exists in cart/order, update quantity
-    if (!isNewOrderDetail) {
-      await OrderDetails.update(
-        {
-          numberOfItems: req.body.numberOfItems + orderDetails.numberOfItems,
-          totalPrice:
-            Number(req.body.totalPrice) + Number(orderDetails.totalPrice),
-          productId: req.params.productId,
+      const [orderDetails, isNewOrderDetail] = await OrderDetails.findOrCreate({
+        where: {
           orderId: existingCart.id,
+          productId: req.params.productId,
         },
-        {
-          where: {
+        defaults: {
+          numberOfItems: req.body.numberOfItems,
+          totalPrice: req.body.totalPrice,
+        },
+      });
+
+      //if the product exists in cart/order, update quantity
+      if (!isNewOrderDetail) {
+        await OrderDetails.update(
+          {
+            numberOfItems: req.body.numberOfItems + orderDetails.numberOfItems,
+            totalPrice:
+              Number(req.body.totalPrice) + Number(orderDetails.totalPrice),
             productId: req.params.productId,
             orderId: existingCart.id,
           },
-          returning: true,
-          plain: true,
-        }
-      );
+          {
+            where: {
+              productId: req.params.productId,
+              orderId: existingCart.id,
+            },
+            returning: true,
+            plain: true,
+          }
+        );
+      }
+      const product = await Product.findByPk(req.params.productId, {
+        include: { model: OrderDetails },
+        where: { orderId: existingCart.id },
+      });
+      res.status(201).json(product);
+    } catch (err) {
+      next(err);
     }
-    const product = await Product.findByPk(req.params.productId, {
-      include: { model: OrderDetails },
-      where: { orderId: existingCart.id },
-    });
-    res.status(201).json(product);
-  } catch (err) {
-    next(err);
   }
-});
+);
 
 // router.post("/", async (req, res, next) => {
 //   try {
@@ -141,22 +160,32 @@ router.post("/user/:userId/:productId", async (req, res, next) => {
 //   }
 // });
 
-router.put("/:orderId", async (req, res, next) => {
+router.put("/:orderId", requireToken, async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.orderId, {
       include: OrderDetails,
     });
-    res.json(await order.update(req.body));
+
+    if (order.userId !== req.user.id) {
+      res.status(403).send("You cannot update other user's orders");
+    } else {
+      res.json(await order.update(req.body));
+    }
   } catch (err) {
     next(err);
   }
 });
 
-router.delete("/:orderId", async (req, res, next) => {
+router.delete("/:orderId", requireToken, async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.orderId);
-    await order.destroy();
-    res.json(order);
+
+    if (order.userId !== req.user.id) {
+      res.status(403).send("You cannot update other user's orders");
+    } else {
+      await order.destroy();
+      res.json(order);
+    }
   } catch (err) {
     next(err);
   }

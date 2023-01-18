@@ -2,14 +2,20 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "@reduxjs/toolkit";
+import { TOKEN } from "../auth/authSlice";
 
 export const fetchAllUsersAsync = createAsyncThunk("allUsers", async () => {
   try {
-    const { data } = await axios.get("/api/users/");
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+    const token = window.localStorage.getItem(TOKEN);
+    if (token) {
+      const { data } = await axios.get("/api/users/", {
+        headers: { authorization: token },
+      });
+      return data;
+    } else {
+      return [];
+    }
+  } catch (error) {}
 });
 
 const usersSlice = createSlice({
