@@ -23,7 +23,15 @@ export default function EditCartItemForm({
   options,
   onSubmit,
 }) {
-  const { id, productName, size, color, numberOfItems, unitPrice } = item;
+  const {
+    id,
+    orderDetailsId,
+    productName,
+    size,
+    color,
+    numberOfItems,
+    unitPrice,
+  } = item;
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(defaultValue);
@@ -46,7 +54,7 @@ export default function EditCartItemForm({
   const _onSubmit = (value, id) => {
     // close menu before submission
     handleClose();
-    onSubmit(value, id);
+    onSubmit(value, id, orderDetailsId);
   };
 
   return (

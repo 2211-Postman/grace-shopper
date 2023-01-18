@@ -8,6 +8,7 @@ import {
   selectCart,
   removeProductFromCart,
   removeFromCartDBAsync,
+  edtQtyInCartDBAsync,
 } from "./cartSlice";
 import CartCard from "./CartCard";
 import CartSummary from "./CartSummary";
@@ -49,9 +50,10 @@ const Cart = () => {
     console.log("Change Size TODO");
   }
 
-  function changeQtyOnClick(value, id) {
+  function changeQtyOnClick(value, id, orderDetailsId) {
     const numberOfItems = Number(value);
     dispatch(editQuantityInCart({ numberOfItems, id }));
+    dispatch(edtQtyInCartDBAsync({ numberOfItems, orderDetailsId }));
   }
 
   const itemsInCart = cart.quantity;

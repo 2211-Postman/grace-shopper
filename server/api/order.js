@@ -214,3 +214,25 @@ router.delete(
     }
   }
 );
+
+router.put(
+  "/orderDetails/:orderDetailsId",
+  requireToken,
+  async (req, res, next) => {
+    try {
+      const orderDetails = await OrderDetails.findByPk(
+        req.params.orderDetailsId,
+        { include: { model: Order } }
+      );
+      if (orderDetails.order.userId !== req.user.id) {
+        res.status(403).send("You cannot update other user's orders");
+      } else {
+        const { numberOfItems } = req.body;
+        await orderDetails.update({ numberOfItems });
+        res.status(204).send("");
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+);
