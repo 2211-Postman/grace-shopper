@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { TOKEN } from "../auth/authSlice";
 
 export const fetchSingleProductAsync = createAsyncThunk(
   "singleProduct",
@@ -12,7 +13,7 @@ export const fetchSingleProductAsync = createAsyncThunk(
     }
   }
 );
-
+``;
 export const editSingleProductAsync = createAsyncThunk(
   "editSingleProduct",
   async ({
@@ -28,18 +29,31 @@ export const editSingleProductAsync = createAsyncThunk(
     imageURL,
   }) => {
     try {
-      const { data } = await axios.put(`/api/products/${productId}`, {
-        productName,
-        sku,
-        brand,
-        size,
-        color,
-        price,
-        description,
-        stockCount,
-        imageURL,
-      });
-      return data;
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.put(
+          `/api/products/${productId}`,
+          {
+            productName,
+            sku,
+            brand,
+            size,
+            color,
+            price,
+            description,
+            stockCount,
+            imageURL,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        return data;
+      } else {
+        return {};
+      }
     } catch (error) {
       console.log(error);
     }
