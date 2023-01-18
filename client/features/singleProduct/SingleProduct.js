@@ -52,13 +52,13 @@ const SingleProduct = () => {
           <Grid item sm={6}>
             <Info product={product} />
           </Grid>
+          <Grid item sm={12}>
+            {isLoggedIn && isAdmin ? (
+              <EditSingleProduct productId={productId} />
+            ) : null}
+          </Grid>
         </Grid>
       ) : null}
-      <Grid item sm={12}>
-        {isLoggedIn && isAdmin ? (
-          <EditSingleProduct productId={productId} />
-        ) : null}
-      </Grid>
     </>
   );
 };
