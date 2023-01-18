@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
@@ -47,14 +48,14 @@ const styles = (theme) => ({
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-function getStepContent(step) {
+function getStepContent(step, addresses, setAddresses, name, setName) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm setAddresses={setAddresses} setName={setName} />;
     case 1:
       return <PaymentForm />;
     case 2:
-      return <Review />;
+      return <Review addresses={addresses} name={name} />;
     default:
       throw new Error("Unknown step");
   }
@@ -65,10 +66,16 @@ class CheckoutCard extends React.Component {
     activeStep: 0,
   };
 
-  handleNext = () => {
-    this.setState((state) => ({
-      activeStep: state.activeStep + 1,
-    }));
+  handleNext = (orderId, placeOrder) => {
+    console.log("in handleNext");
+    this.setState((state) => {
+      console.log("activeStep", state.activeStep);
+      console.log("steps.length", steps.length);
+      if (state.activeStep === steps.length - 1) {
+        placeOrder(orderId);
+      }
+      return { activeStep: state.activeStep + 1 };
+    });
   };
 
   handleBack = () => {
@@ -84,8 +91,17 @@ class CheckoutCard extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      orderId,
+      placeOrder,
+      addresses,
+      setAddresses,
+      name,
+      setName,
+    } = this.props;
     const { activeStep } = this.state;
+
     return (
       <React.Fragment>
         <CssBaseline />
@@ -118,7 +134,13 @@ class CheckoutCard extends React.Component {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  {getStepContent(activeStep)}
+                  {getStepContent(
+                    activeStep,
+                    addresses,
+                    setAddresses,
+                    name,
+                    setName
+                  )}
                   <div className={classes.buttons}>
                     {activeStep !== 0 && (
                       <Button
@@ -131,7 +153,7 @@ class CheckoutCard extends React.Component {
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={this.handleNext}
+                      onClick={() => this.handleNext(orderId, placeOrder)}
                       className={classes.button}
                     >
                       {activeStep === steps.length - 1 ? "Place order" : "Next"}

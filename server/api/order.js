@@ -37,7 +37,7 @@ router.get("/getCart/:userId/", requireToken, async (req, res, next) => {
         userId: cart.userId,
       }));
 
-      res.json(newArr);
+      res.json({ products: newArr, orderId: cart.id });
     } else {
       //if theres no cart, create one for the user
       const user = await User.findByPk(req.params.userId);
@@ -227,8 +227,8 @@ router.put(
       if (orderDetails.order.userId !== req.user.id) {
         res.status(403).send("You cannot update other user's orders");
       } else {
-        const { numberOfItems } = req.body;
-        await orderDetails.update({ numberOfItems });
+        const { numberOfItems, purchased } = req.body;
+        await orderDetails.update({ numberOfItems, purchased });
         res.status(204).send("");
       }
     } catch (err) {

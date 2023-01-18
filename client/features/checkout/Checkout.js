@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Grid, Typography, Container } from "@mui/material";
 import { Stack } from "@mui/material";
@@ -7,15 +7,26 @@ import CheckoutCard from "./CheckoutCard";
 import CheckoutSummary from "./CheckoutSummary";
 import CheckoutReview from "./CheckoutReview";
 
-import { selectCart } from "../cart/cartSlice.js";
+import { selectCart, emptyCart } from "../cart/cartSlice.js";
+import { placeOrderInDBAsync } from "../cart/cartSlice";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   function goToProductOnClick(productId) {
     navigate(`/products/${productId}/`);
   }
   const itemsInCheckout = cart.quantity;
+  const orderId = cart.orderId;
+
+  const placeOrder = async (orderId) => {
+    await dispatch(placeOrderInDBAsync(orderId));
+    dispatch(emptyCart());
+  };
+
+  const [addresses, setAddresses] = useState([]);
+  const [name, setName] = useState("");
 
   return (
     <Container
@@ -35,7 +46,14 @@ const Checkout = () => {
 
       <Grid container spacing={3} columns={2}>
         <Grid item xs={2} sm={1} md={1}>
-          <CheckoutCard />
+          <CheckoutCard
+            orderId={orderId}
+            placeOrder={placeOrder}
+            addresses={addresses}
+            setAddresses={setAddresses}
+            name={name}
+            setName={setName}
+          />
         </Grid>
 
         <Grid item xs={2} sm={1} md={1}>

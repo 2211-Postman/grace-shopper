@@ -8,13 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { usdFormatter, getShippingCost } from "../../helpers";
 
-const addresses = [
-  "1 Material-UI Drive",
-  "Reactville",
-  "Anytown",
-  "99999",
-  "USA",
-];
 const payments = [
   { name: "Card type", detail: "Visa" },
   { name: "Card holder", detail: "Mr John Smith" },
@@ -35,7 +28,7 @@ const styles = (theme) => ({
 });
 
 function Review(props) {
-  const { classes } = props;
+  const { classes, addresses, name } = props;
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -47,10 +40,10 @@ function Review(props) {
             Shipping
           </Typography>
           <Typography gutterBottom variant="subtitle2">
-            John Smith
+            {name}
           </Typography>
           <Typography gutterBottom variant="subtitle2">
-            {addresses.join(", ")}
+            {addresses.filter((x) => x != "").join(", ")}
           </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
