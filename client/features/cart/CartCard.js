@@ -31,6 +31,7 @@ export default function CartCard({
 }) {
   const {
     id,
+    orderDetailsId,
     productName,
     size,
     color,
@@ -107,7 +108,9 @@ export default function CartCard({
             />
           </Grid>
           <Grid item md={3}>
-            <CardActionArea onClick={(e) => removeFromCartOnClick(id)}>
+            <CardActionArea
+              onClick={(e) => removeFromCartOnClick(id, orderDetailsId)}
+            >
               <Typography component="div" variant="p" fontSize="12px">
                 {"X Remove"}
               </Typography>

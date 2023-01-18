@@ -22,6 +22,7 @@ router.get("/getCart/:userId/", requireToken, async (req, res, next) => {
         where: { orderId: cart.id },
         include: Product,
       });
+
       const newArr = await products.map((ele) => ({
         id: ele.product["id"],
         productName: ele.product["productName"],
@@ -32,6 +33,8 @@ router.get("/getCart/:userId/", requireToken, async (req, res, next) => {
         size: ele.product["size"],
         unitPrice: ele.product["price"],
         totalPrice: ele.numberOfItems * ele.product["price"],
+        orderDetailsId: ele.id,
+        userId: cart.userId,
       }));
 
       res.json(newArr);
@@ -137,7 +140,7 @@ router.post(
         include: { model: OrderDetails },
         where: { orderId: existingCart.id },
       });
-      res.status(201).json(product);
+      res.status(201).json(orderDetails.id);
     } catch (err) {
       next(err);
     }
@@ -190,3 +193,24 @@ router.delete("/:orderId", requireToken, async (req, res, next) => {
     next(err);
   }
 });
+
+router.delete(
+  "/orderDetails/:orderDetailsId",
+  requireToken,
+  async (req, res, next) => {
+    try {
+      const orderDetails = await OrderDetails.findByPk(
+        req.params.orderDetailsId,
+        { include: { model: Order } }
+      );
+      if (orderDetails.order.userId !== req.user.id) {
+        res.status(403).send("You cannot update other user's orders");
+      } else {
+        await orderDetails.destroy();
+        res.status(202).send("");
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
+);
