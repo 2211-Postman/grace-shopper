@@ -4,14 +4,14 @@ import axios from "axios";
 /*
   CONSTANT VARIABLES
 */
-const TOKEN = "token";
+export const TOKEN = "token";
 
 /*
   THUNKS
 */
 export const me = createAsyncThunk("auth/me", async () => {
-  const token = window.localStorage.getItem(TOKEN);
   try {
+    const token = window.localStorage.getItem(TOKEN);
     if (token) {
       const res = await axios.get("/auth/me", {
         headers: {

@@ -1,11 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { TOKEN } from "../auth/authSlice";
 
 export const fetchUserCart = createAsyncThunk(
   "get user cart",
   async (userId) => {
     try {
-      const { data } = await axios.get(`./api/orders/getCart/${userId}`);
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        const { data } = await axios.get(`./api/orders/getCart/${userId}`, {
+          headers: {
+            authorization: token,
+          },
+        });
+        return data;
+      } else {
+        return [];
+      }
       return data;
     } catch (err) {
       console.log(err);
