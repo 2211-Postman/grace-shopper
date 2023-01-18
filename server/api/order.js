@@ -43,7 +43,7 @@ router.get("/getCart/:userId/", requireToken, async (req, res, next) => {
       const user = await User.findByPk(req.params.userId);
       const newUserCart = await user.createOrder();
 
-      res.json([]);
+      res.json({ products: [], orderId: newUserCart.id });
     }
   } catch (err) {
     next(err);

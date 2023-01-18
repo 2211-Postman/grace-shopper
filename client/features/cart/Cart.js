@@ -12,6 +12,7 @@ import {
 } from "./cartSlice";
 import CartCard from "./CartCard";
 import CartSummary from "./CartSummary";
+import { helperText } from "../auth/authSlice";
 
 import {
   fetchAllProductsAsync,
@@ -31,10 +32,17 @@ const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const cart = useSelector(selectCart);
 
   function checkoutOnClick() {
-    navigate(`/checkout`);
+    if (isLoggedIn) {
+      navigate(`/checkout`);
+    } else {
+      const text = "Login or Sign up to checkout your cart";
+      dispatch(helperText(text));
+      navigate("/login");
+    }
   }
 
   function goToProductOnClick(productId) {

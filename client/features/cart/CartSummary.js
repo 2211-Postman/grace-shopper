@@ -60,7 +60,11 @@ export default function CartSummary({ cart, checkoutOnClick }) {
           </Typography>
         </Container>
       </CardContent>
-      <Button variant="contained" onClick={(e) => checkoutOnClick()}>
+      <Button
+        variant="contained"
+        disabled={cart.quantity === 0}
+        onClick={(e) => checkoutOnClick()}
+      >
         {`Checkout: ${dollar(total)}`}
       </Button>
     </Card>

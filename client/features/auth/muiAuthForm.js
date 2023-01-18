@@ -23,6 +23,7 @@ export default function MuiAuthForm({
   displayName,
   handleSubmit,
   formInputs,
+  helperText,
   error,
 }) {
   return (
@@ -85,6 +86,12 @@ export default function MuiAuthForm({
             </Grid>
           ) : null}
         </Box>
+        {helperText && (
+          <div>
+            <Alert severity="info">{helperText}</Alert>
+          </div>
+        )}
+
         {error && (
           <div>
             <Alert severity="error">{error}</Alert>
