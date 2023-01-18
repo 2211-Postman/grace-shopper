@@ -65,6 +65,28 @@ export const removeFromCartDBAsync = createAsyncThunk(
   }
 );
 
+export const edtQtyInCartDBAsync = createAsyncThunk(
+  "edit qty product from cart and DB",
+  async ({ numberOfItems, orderDetailsId }) => {
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        await axios.put(
+          `/api/orders/orderDetails/${orderDetailsId}`,
+          { numberOfItems },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 const cartFromLocalStorage = JSON.parse(
   window.localStorage.getItem("cart") || '{"products": [],"quantity": 0}'
 );
