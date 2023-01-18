@@ -71,13 +71,13 @@ const Cart = () => {
       <Typography
         component="div"
         sx={{ fontWeight: "bold" }}
-        variant="p"
+        variant="h5"
         align="center"
       >
         {`Shopping Cart (${itemsInCart})`}
       </Typography>
       <Grid container spacing={3} columns={2}>
-        <Grid item xs={2} sm={1} md={1}>
+        <Grid item xs={2} sm={2} md={1}>
           <Stack spacing={2}>
             {cart && cart.products && cart.products.length
               ? cart.products.map((item) => (
@@ -94,7 +94,7 @@ const Cart = () => {
               : null}
           </Stack>
         </Grid>
-        <Grid item xs={2} sm={1} md={1}>
+        <Grid item xs={2} sm={2} md={1}>
           <CartSummary cart={cart} checkoutOnClick={checkoutOnClick} />
         </Grid>
       </Grid>

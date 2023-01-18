@@ -45,7 +45,7 @@ export default function CartCard({
   return (
     <Card className={classes.myCustomClass} sx={{ display: "flex" }}>
       <CardActionArea
-        sx={{ width: "20%" }}
+        sx={{ width: "25%" }}
         onClick={(e) => goToProductOnClick(id)}
       >
         <CardMedia
@@ -66,34 +66,33 @@ export default function CartCard({
       >
         <Grid container spacing={1} columns={8}>
           <Grid item md={6}>
-            <Typography component="div" variant="p" fontSize="10px">
+            <Typography component="div" variant="p" fontSize="14px">
               {productName}
             </Typography>
           </Grid>
           <Grid item md={2}>
-            <Typography component="div" variant="p" fontSize="10px">
+            <Typography component="div" variant="p" fontSize="14px">
               {`${dollar(totalPrice)}`}
             </Typography>
           </Grid>
         </Grid>
-        <Typography component="div" variant="p" fontSize="9px" color="grey">
+        <Typography component="div" variant="p" fontSize="12px" color="grey">
           {color}
         </Typography>
-        <Typography component="div" variant="p" fontSize="9px" color="grey">
+        <Typography component="div" variant="p" fontSize="12px" color="grey">
           {`Size: ${size}`}
         </Typography>
-        <Typography component="div" variant="p" fontSize="9px">
+        <Typography component="div" variant="p" fontSize="12px">
           {`Unit Price: ${dollar(unitPrice)}`}
         </Typography>
 
-        <Typography component="div" variant="p" fontSize="10px">
+        <Typography component="div" variant="p" fontSize="12px">
           {`Quantity: ${numberOfItems}`}
         </Typography>
-
         <Grid container spacing={1} columns={9}>
           <Grid item md={3}>
             <CardActionArea onClick={(e) => changeSizeOnClick(id)}>
-              <Typography component="div" variant="p" fontSize="8px">
+              <Typography component="div" variant="p" fontSize="12px">
                 {"Edit Size"}
               </Typography>
             </CardActionArea>
@@ -109,7 +108,7 @@ export default function CartCard({
           </Grid>
           <Grid item md={3}>
             <CardActionArea onClick={(e) => removeFromCartOnClick(id)}>
-              <Typography component="div" variant="p" fontSize="8px">
+              <Typography component="div" variant="p" fontSize="12px">
                 {"X Remove"}
               </Typography>
             </CardActionArea>

@@ -95,7 +95,8 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                     </div>
                   ) : (
                     <Typography textAlign="center">
-                      <Link color="inherit" underline="hover" href={`/${page}`}>
+                      {pageLabels[i]}
+                      <Link color="white" underline="hover" href={`/${page}`}>
                         {pageLabels[i]}
                       </Link>
                     </Typography>
@@ -131,7 +132,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                 {page === "logout" ? (
                   <div onClick={logoutAndRedirectHome}>Logout</div>
                 ) : (
-                  <Link color="inherit" underline="hover" href={`/${page}`}>
+                  <Link color="white" underline="hover" href={`/${page}`}>
                     {pageLabels[i]}
                   </Link>
                 )}
