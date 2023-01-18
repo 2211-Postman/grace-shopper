@@ -29,29 +29,33 @@ const ProductsCard = ({
         alignItems: "center",
       }}
     >
-      <CardMedia
-        component="img"
-        sx={{ width: 200 }}
-        image={imageURL[0]}
-        alt="Sneaker Photo"
-      />
-      <CardContent sx={{ flex: "1 0 auto" }}>
-        <Typography component="div" variant="p" color="grey">
-          {brand}
-        </Typography>
-        <Typography component="div" variant="p">
-          {productName}
-        </Typography>
-        <Typography component="div" variant="p" color="grey">
-          {`${dollar(price)}`}
-        </Typography>
-      </CardContent>
+      <CardActionArea
+        onClick={(e) => onClick(id)}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <CardMedia
+          component="img"
+          sx={{ width: 200 }}
+          image={imageURL[0]}
+          alt="Sneaker Photo"
+        />
+        <CardContent sx={{ flex: "1 0 auto" }}>
+          <Typography component="div" variant="p" color="grey">
+            {brand}
+          </Typography>
+          <Typography component="div" variant="p">
+            {productName}
+          </Typography>
+          <Typography component="div" variant="p" color="grey">
+            {`${dollar(price)}`}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       <CardActions>
-        {!isAdmin ? (
-          <Button size="small" onClick={(e) => onClick(id)}>
-            View
-          </Button>
-        ) : isLoggedIn && isAdmin ? (
+        {isLoggedIn && isAdmin ? (
           <div>
             <Button size="small" onClickCapture={(e) => onClick(id)}>
               Edit
