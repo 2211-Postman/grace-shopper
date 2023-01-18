@@ -61,6 +61,7 @@ export const authSlice = createSlice({
   initialState: {
     me: {},
     error: null,
+    text: null,
   },
   reducers: {
     logout(state, action) {
@@ -68,6 +69,9 @@ export const authSlice = createSlice({
       window.localStorage.removeItem("cart");
       state.me = {};
       state.error = null;
+    },
+    helperText(state, action) {
+      state.text = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -86,7 +90,7 @@ export const authSlice = createSlice({
 /*
   ACTIONS
 */
-export const { logout } = authSlice.actions;
+export const { logout, helperText } = authSlice.actions;
 
 /*
   REDUCER

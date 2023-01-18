@@ -87,8 +87,31 @@ export const edtQtyInCartDBAsync = createAsyncThunk(
   }
 );
 
+export const placeOrderInDBAsync = createAsyncThunk(
+  "convert cart item to order history item",
+  async (orderId) => {
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      if (token) {
+        await axios.put(
+          `/api/orders/${orderId}`,
+          { purchased: true },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 const cartFromLocalStorage = JSON.parse(
-  window.localStorage.getItem("cart") || '{"products": [],"quantity": 0}'
+  window.localStorage.getItem("cart") ||
+    '{"products": [],"quantity": 0, "orderId": null}'
 );
 
 const _removeProductFromCart = (state, id) => {
@@ -146,11 +169,13 @@ const cartSlice = createSlice({
     emptyCart: (state, action) => {
       state.products = [];
       state.quantity = 0;
+      state.orderId = null;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserCart.fulfilled, (state, action) => {
-      state.products = action.payload;
+      state.products = action.payload.products;
+      state.orderId = action.payload.orderId;
       state.quantity = state.products.length;
     });
   },

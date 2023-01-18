@@ -10,6 +10,8 @@ import MuiAuthForm from "./muiAuthForm";
 
 const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
+  const { text } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (evt) => {
@@ -43,6 +45,7 @@ const AuthForm = ({ name, displayName }) => {
         displayName={displayName}
         formInputs={formInputs}
         error={error}
+        helperText={text}
       />
     </div>
   );
