@@ -9,6 +9,12 @@ const App = () => {
     <div>
       <Navbar />
       <AppRoutes />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <Footer />
     </div>
   );
