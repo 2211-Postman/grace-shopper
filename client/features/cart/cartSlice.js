@@ -28,7 +28,6 @@ export const addToUserCartDB = createAsyncThunk(
   async ({ userId, ...orderDetails }) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
-      console.log("userId: ", userId, "product: ", orderDetails);
       if (token) {
         const { data } = await axios.post(
           `/api/orders/user/${userId}/${orderDetails.id}`,
@@ -40,8 +39,25 @@ export const addToUserCartDB = createAsyncThunk(
           }
         );
         return data;
-      } else {
-        return [];
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const removeFromCartDBAsync = createAsyncThunk(
+  "delete user product from cart and DB",
+  async (orderDetailsId) => {
+    try {
+      const token = window.localStorage.getItem(TOKEN);
+      console.log("token in slice", token);
+      if (token) {
+        await axios.delete(`/api/orders/orderDetails/${orderDetailsId}`, {
+          headers: {
+            authorization: token,
+          },
+        });
       }
     } catch (err) {
       console.log(err);

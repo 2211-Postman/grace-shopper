@@ -80,13 +80,14 @@ const Info = ({ product }) => {
     orderDetails["unitPrice"] = product["price"];
     orderDetails["totalPrice"] = numberOfItems * product["price"];
     orderDetails["userId"] = currentUserId;
+
     if (qtyInCart) {
-      await dispatch(addToUserCartDB(orderDetails));
       dispatch(addQuantityToCart({ id, numberOfItems }));
     } else {
       dispatch(addToCart({ ...orderDetails }));
-      await dispatch(addToUserCartDB(orderDetails));
     }
+    const orderDetailId = await dispatch(addToUserCartDB(orderDetails));
+    orderDetails["orderDetailId"] = orderDetailId;
   };
 
   return (

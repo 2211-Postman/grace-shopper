@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Typography, Container } from "@mui/material";
 import { Stack } from "@mui/material";
 
-import { selectCart, removeProductFromCart } from "./cartSlice";
+import {
+  selectCart,
+  removeProductFromCart,
+  removeFromCartDBAsync,
+} from "./cartSlice";
 import CartCard from "./CartCard";
 import CartSummary from "./CartSummary";
 
@@ -36,8 +40,9 @@ const Cart = () => {
     navigate(`/products/${productId}/`);
   }
 
-  function removeFromCartOnClick(productId) {
+  function removeFromCartOnClick(productId, orderDetailsId) {
     dispatch(removeProductFromCart(productId));
+    dispatch(removeFromCartDBAsync(orderDetailsId));
   }
 
   function changeSizeOnClick(productId) {
