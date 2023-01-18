@@ -9,7 +9,8 @@ const Home = (props) => {
   const firstName = useSelector((state) => state.auth.me.firstName);
   return (
     <div>
-      <h3>Welcome, {firstName}</h3>
+      <h3 style={{ textAlign: "center" }}>Welcome, {firstName}!</h3>
+      <br></br>
       <Products />
     </div>
   );
