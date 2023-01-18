@@ -32,8 +32,8 @@ export const addToUserCartDB = createAsyncThunk(
       if (token) {
         const { data } = await axios.post(
           `/api/orders/user/${userId}/${orderDetails.id}`,
+          orderDetails,
           {
-            orderDetails,
             headers: {
               authorization: token,
             },
