@@ -67,7 +67,6 @@ class CheckoutCard extends React.Component {
   };
 
   handleNext = (orderId, placeOrder) => {
-    console.log("in handleNext");
     this.setState((state) => {
       if (state.activeStep === steps.length - 1) {
         placeOrder(orderId);
