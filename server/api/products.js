@@ -29,24 +29,26 @@ router.post("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const {
       productName,
+      sku,
       brand,
       size,
       color,
       price,
       description,
       stockCount,
-      imageUrl,
+      imageURL,
     } = req.body;
     res.json(
       await Product.create({
         productName,
+        sku,
         brand,
         size,
         color,
         price,
         description,
         stockCount,
-        imageUrl,
+        imageURL,
       })
     );
   } catch (err) {
