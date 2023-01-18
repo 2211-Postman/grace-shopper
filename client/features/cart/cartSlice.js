@@ -170,8 +170,6 @@ const cartSlice = createSlice({
       state.products = [];
       state.quantity = 0;
       state.orderId = null;
-
-      console.log("IM IN EMPTY CART");
     },
   },
   extraReducers: (builder) => {
