@@ -82,24 +82,24 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/050/original/1029146_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
-    Product.create({
-      productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
-      sku: "DZ5485612",
-      brand: "Air Jordan",
-      size: 12,
-      color: "WHITE/VARSITY RED-BLACK",
-      price: 500,
-      description:
-        "The Air Jordan 1 Retro High OG 'Chicago' 2015 colorway features full-leather uppers in Bulls team colors. The 'Chicago' was first retroed in 1994 and stayed true to the 1985 design. Further retros were released in 2013 with small changes to the design, and again in 2015 with the original branding details: the Nike Air logo on the tongue and the original clean heel without the Jumpman logo.",
-      stockCount: 1,
-      imageURL: [
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/062/original/1029146_01.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/055/original/1029146_04.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/061/original/1029146_03.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/054/original/1029146_06.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/050/original/1029146_08.jpg.jpeg?action=crop&width=2000",
-      ],
-    }),
+    // Product.create({
+    //   productName: "AIR JORDAN 1 RETRO HIGH OG CHICAGO",
+    //   sku: "DZ5485612",
+    //   brand: "Air Jordan",
+    //   size: 12,
+    //   color: "WHITE/VARSITY RED-BLACK",
+    //   price: 500,
+    //   description:
+    //     "The Air Jordan 1 Retro High OG 'Chicago' 2015 colorway features full-leather uppers in Bulls team colors. The 'Chicago' was first retroed in 1994 and stayed true to the 1985 design. Further retros were released in 2013 with small changes to the design, and again in 2015 with the original branding details: the Nike Air logo on the tongue and the original clean heel without the Jumpman logo.",
+    //   stockCount: 1,
+    //   imageURL: [
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/062/original/1029146_01.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/055/original/1029146_04.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/061/original/1029146_03.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/054/original/1029146_06.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/080/963/050/original/1029146_08.jpg.jpeg?action=crop&width=2000",
+    //   ],
+    // }),
     Product.create({
       productName: "AIR JORDAN 1 HIGH OG TS SP Travis Scott",
       sku: "CD4487100",
@@ -116,6 +116,24 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/299/636/original/488879_04.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/929/327/original/488879_06.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/299/639/original/488879_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "AIR JORDAN 3 RETRO OG BLACK CEMENT 2018",
+      sku: "D854262001",
+      brand: "Air Jordan",
+      size: 7.5,
+      color: "BLACK/FIRE RED-CEMENT GREY",
+      price: 515,
+      description:
+        "No matter how many times the Black/Cement Air Jordan 3 releases, it’s always going to be a major event. It’s latest return for 2018 was bigger than ever, because the OG “Nike Air” branding is finally back on the heel, missing for the last two retro releases in 2008 and 2011. Even if it was still a Jumpman on the heels, the long absence of the Jordan 3 Black/Cement has left many Jordan collectors fiending for a fresh pair, so demand was higher than ever when these dropped on MJ’s birthday. If you missed out on the 2018 Air Jordan 3 Black/Cement at retail, your friends here at Stadium Goods have you covered. Don’t pass up one of the most iconic sneakers of all time.",
+      stockCount: 53,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/011/395/original/144205_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/011/391/original/144205_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/011/392/original/144205_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/011/388/original/144205_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/011/389/original/144205_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
     Product.create({
@@ -137,6 +155,24 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "AIR JORDAN 4 RETRO OG BRED",
+      sku: "308497060",
+      brand: "Air Jordan",
+      size: 8.5,
+      color: "BLACK/CEMENT GREY-SUMMIT WHITE",
+      price: 425,
+      description:
+        "This Air Jordan 4 “Bred” is the 2019 retro of the iconic colorway of Michael Jordan’s fourth signature shoe. The famous black and red version of the Jordan 4 returned in the spring of 2019 with its original “Nike Air” branding on the heel for the first time since its first retro release in 1999. Now 20 years after that first retro and 30 years after its initial 1989 release, the “Bred” Air Jordan 4 looks just as outstanding as ever. This true-to-OG retro features a black Durabuck (synthetic nubuck) upper with grey, red, and white accents throughout. In addition to the large Nike Air logo on the heel tab, the original Nike branding is also present on the outsole and sockliner. The Air Jordan 4 “Bred” released on May 4, 2019.",
+      stockCount: 25,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/306/465/original/461782_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/306/467/original/461782_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/306/468/original/461782_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/306/466/original/461782_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/306/462/original/461782_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "AIR JORDAN 4 RETRO OG WHITE CEMENT",
       sku: "840606192",
       brand: "Air Jordan",
@@ -152,6 +188,24 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/308/068/original/31342_04.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/308/073/original/31342_06.jpg.jpeg?action=crop&width=2000",
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/308/075/original/31342_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "AIR JORDAN 4 RETRO SP WMNS OFF-WHITE SAIL",
+      sku: "CV9388100",
+      brand: "Air Jordan",
+      size: 11.5,
+      color: "SAIL/MUSLIN-WHITE-BLACK",
+      price: 425,
+      description:
+        "The women's Off-White x Air Jordan 4 “Sail” is a highly desirable collaboration between Virgil Abloh’s fashion label and Jordan Brand on Michael Jordan’s fourth signature shoe. Originating as a sample during Abloh’s “Figures of Speech” exhibit in Chicago’s Museum of Contemporary Art in Fall 2019, this clean colorway received an official retail release in Summer 2020 to much fanfare. The signature “quotations” aesthetic of Abloh’s Jordan Brand collaborations underpins this Sail colored shoe, including “Air” branding printed on the midsole and “shoelace” detailing in black lettering on the laces. Translucent detailing, including the heel cup, Wings clips on the collar, and netting on the midsole and throat are all firsts for the Jordan 4. The visible Air window in the heel is surrounded by a white midsole. Release date: July 25, 2020.",
+      stockCount: 2,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/083/344/824/original/603678_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/083/344/822/original/603678_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/083/344/821/original/603678_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/083/344/814/original/603678_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/083/344/816/original/603678_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
     Product.create({
@@ -174,6 +228,24 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "KD 4 ALL STAR - GALAXY",
+      sku: "520814001",
+      brand: "Nike",
+      size: 9,
+      color: "METALLIC SILVER/TOTAL ORANGE-DARK GREY",
+      price: 675,
+      description:
+        "This Nike Zoom KD 4 All Star 'Galaxy' colorway features a metallic silver synthetic upper with total orange accents inspired by flight suits worn by astronauts. Additional features include a NASA-inspired mission patch on the tongue, embroidered dark grey KD branding on the heel, a black starry speckled midsole, and a glow-in-the-dark outsole. The sneaker dropped for the 2012 All-Star Game in Orlando alongside ‘Galaxy’ themed Zoom Kobe 7s, LeBron 9s, and Air Foamposite 1s.",
+      stockCount: 4,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/049/367/353/original/13333_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/049/367/356/original/13333_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/049/367/358/original/13333_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/049/367/361/original/13333_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/049/367/365/original/13333_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "KOBE 6 PROTRO GRINCH",
       sku: "CW2190300",
       brand: "Nike",
@@ -191,24 +263,24 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/624/original/631511_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
-    Product.create({
-      productName: "KOBE 6 PROTRO GRINCH",
-      sku: "CW2190300",
-      brand: "Nike",
-      size: 10,
-      color: "GREEN APPLE/VOLT/CRIMSON/BLACK",
-      price: 425,
-      description:
-        "Originally released in 2010 for a Christmas Day collection, the Zoom Kobe 6 Protro 'Grinch' dropped in December 2020. The shoe's upper features a Green Apple and Volt look, with polyurethane detailing creating a snakeskin-style texture throughout the construction. Crimson on the branding and laces adds to the holiday aesthetic, while underfoot, the midsole incorporates Zoom Air to provide cushioning.",
-      stockCount: 7,
-      imageURL: [
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/603/original/631511_01.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/608/original/631511_03.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/619/original/631511_06.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/610/original/631511_04.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/624/original/631511_08.jpg.jpeg?action=crop&width=2000",
-      ],
-    }),
+    // Product.create({
+    //   productName: "KOBE 6 PROTRO GRINCH",
+    //   sku: "CW2190300",
+    //   brand: "Nike",
+    //   size: 10,
+    //   color: "GREEN APPLE/VOLT/CRIMSON/BLACK",
+    //   price: 425,
+    //   description:
+    //     "Originally released in 2010 for a Christmas Day collection, the Zoom Kobe 6 Protro 'Grinch' dropped in December 2020. The shoe's upper features a Green Apple and Volt look, with polyurethane detailing creating a snakeskin-style texture throughout the construction. Crimson on the branding and laces adds to the holiday aesthetic, while underfoot, the midsole incorporates Zoom Air to provide cushioning.",
+    //   stockCount: 7,
+    //   imageURL: [
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/603/original/631511_01.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/608/original/631511_03.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/619/original/631511_06.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/610/original/631511_04.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/050/505/624/original/631511_08.jpg.jpeg?action=crop&width=2000",
+    //   ],
+    // }),
     Product.create({
       productName: "KOBE 5 PROTRO BRUCE LEE",
       sku: "CD4991700",
@@ -320,6 +392,42 @@ async function seed() {
       ],
     }),
     Product.create({
+      productName: "LEBRON 10 EXT QS CORK",
+      sku: "D580890200",
+      brand: "Nike",
+      size: 10.5,
+      color: "CLSSC BRWN/CLSSC BRWN-UNVRSTY",
+      price: 900,
+      description:
+        "Commemorating LeBron James’ first NBA championship, the LeBron X EXT appears with a QS offering that’s constructed with an authentic cork makeup throughout the upper. The shoe is designed with more premium materials than the performance version, featuring a leather application on the tongue and gold accents on the upper eyelets. Flywire cables along the eyestay generate forefoot support, while the full-length Nike Zoom cushioning unit promotes a cushioned ride.",
+      stockCount: 4,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/043/615/975/original/13307_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/043/615/970/original/13307_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/043/615/969/original/13307_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/043/615/968/original/13307_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/043/615/971/original/13307_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "AIR YEEZY NET",
+      sku: "366164111",
+      brand: "Nike",
+      size: 8.5,
+      color: "NET/NET",
+      price: 130150,
+      description:
+        "Rounding out the Nike Air Yeezy trio, the “Net” iteration of the sneaker was the last to release on June 1, 2009. Like the previous two colorways, the subtle changes to the upper define these kicks. Anchored by a buttery tan leather upper, this version does away with the all-over Y print on the strap and heel. Instead, the former sports a patent leather look in beige, while the latter portion appears in a supple leather. The aforementioned Y print makes an appearance on the mudguard – almost mimicking elephant print in the process. Perforations also return on the leather portion of the upper. Pink accents on the inner lining and heel, a white midsole, and glow-in-the-dark outsole complete the design",
+      stockCount: 1,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/930/188/original/12150_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/930/181/original/12150_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/930/180/original/12150_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/077/930/177/original/12150_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/080/273/original/12150_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
       productName: "AIR YEEZY 2 NRG SOLAR RED",
       sku: "508214006",
       brand: "Nike",
@@ -338,21 +446,57 @@ async function seed() {
       ],
     }),
     Product.create({
-      productName: "YEEZY BOOST 350 V2 ZEBRA",
-      sku: "CP9654",
+      productName: "YEEZY BOOST 350 TURTLE DOVE",
+      sku: "AQ4832",
       brand: "Adidas",
-      size: 9.5,
-      color: "WHITE/CBLACK/RED",
-      price: 615,
+      size: 6.5,
+      color: "TURTLE/BLUGRA/CWHITE",
+      price: 585,
       description:
-        "The Yeezy Boost 350 V2 'Zebra' released on February 25, 2017, combining an upper white / core black Primeknit with a red SPLY 350 branding and a full-length translucent midsole boost. On November 16, 2018 and April 9th, 2022, restocks of the ' Zebra ' arrived, with more pairs hitting the marketplace and building on Kanye's commitment to make Yeezy more available to anyone who wished to acquire them.",
+        "The adidas Yeezy Boost 350 “Turtledove” is the debut colorway of the modern classic, game-changing silhouette by Kanye West. The inaugural colorway features a Primeknit upper in black and cream white tones with a white rubber midsole that wraps around full-length Boost foam cushioning. The heel tab includes a red stripe to complete the clean look. Released in 2015 in very limited quantities, the 350 Boost “Turtledove” has become one of the rarest and most valuable models of the world famous and highly coveted sneaker line",
       stockCount: 3,
       imageURL: [
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/012/original/105568_01.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/010/original/105568_03.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/004/original/105568_04.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/001/original/105568_06.jpg.jpeg?action=crop&width=2000",
-        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/000/original/105568_08.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/075/800/577/original/923736_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/075/800/578/original/923736_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/075/800/576/original/923736_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/075/800/575/original/923736_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/075/800/574/original/923736_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "YEEZY BOOST 350 V2 OREO",
+      sku: "BY1604",
+      brand: "Adidas",
+      size: 8,
+      color: "CBLACK/CWHITE/CBLACK",
+      price: 300,
+      description:
+        "The adidas Yeezy Boost 350 V2 “Oreo” was the final release of the highly popular silhouette by Kanye West in 2016. Similar to the trio of colorways that hit retailers in November of 2016, this Yeezy Boost 350 V2 features a black woven Primeknit upper and a matching rubber midsole that covers full-length Boost cushioning. This “Oreo” edition features a white stripe across the upper from heel to toe, which earned it the comparison to the delicious sandwich cookies. The Yeezy Boost 350 V2 “Oreo” released in limited quantities in December 2016.",
+      stockCount: 9,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/068/990/206/original/67145_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/068/990/212/original/67145_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/068/990/205/original/67145_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/068/990/199/original/67145_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/068/990/202/original/67145_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "YEEZY BOOST 350 V2 REFLECTIVE BELUGA",
+      sku: "GW1229",
+      brand: "Adidas",
+      size: 11,
+      color: "STEEPLE GRAY/BELUGA/SOLAR RED",
+      price: 345,
+      description:
+        "The adidas Yeezy Boost 350 V2 Reflective “Beluga” is a December 2021 release that updates the popular colorway of Kanye West’s casual lifestyle shoe with high-visibility reflective detailing. The original “Beluga” Yeezy Boost 350 V2 debuted back in September 2016 to much fanfare, and it is seen as one of the most desirable colorways of any adidas Yeezy shoe, 350 V2 or otherwise. The Reflective “Beluga” is a one-to-one remake of the 2016 version of the colorway, now with reflective material integrated into the Primeknit. The upper features a grey woven Primeknit upper with a contrasting Solar Red side stripes with contrasting “SPLY-350” branding. The marbled grey and black laces, as well as the upper, are treated with a reflective finish. A full-length Boost cushioned midsole provides a responsive ride. Release date: December 18, 2021.",
+      stockCount: 15,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/064/334/468/original/848748_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/064/334/466/original/848748_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/064/334/474/original/848748_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/064/334/464/original/848748_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/064/334/473/original/848748_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
     Product.create({
@@ -373,6 +517,24 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/000/original/105568_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
+    // Product.create({
+    //   productName: "YEEZY BOOST 350 V2 ZEBRA",
+    //   sku: "CP9654",
+    //   brand: "Adidas",
+    //   size: 9.5,
+    //   color: "WHITE/CBLACK/RED",
+    //   price: 615,
+    //   description:
+    //     "The Yeezy Boost 350 V2 'Zebra' released on February 25, 2017, combining an upper white / core black Primeknit with a red SPLY 350 branding and a full-length translucent midsole boost. On November 16, 2018 and April 9th, 2022, restocks of the ' Zebra ' arrived, with more pairs hitting the marketplace and building on Kanye's commitment to make Yeezy more available to anyone who wished to acquire them.",
+    //   stockCount: 3,
+    //   imageURL: [
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/012/original/105568_01.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/010/original/105568_03.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/004/original/105568_04.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/001/original/105568_06.jpg.jpeg?action=crop&width=2000",
+    //     "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/278/000/original/105568_08.jpg.jpeg?action=crop&width=2000",
+    //   ],
+    // }),
     Product.create({
       productName: "NMD_R1 PK",
       sku: "BZ0221",
@@ -391,16 +553,82 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/078/081/408/original/151301_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
+    Product.create({
+      productName: "THE 10: AIR PRESTO OFF-WHITE",
+      sku: "AA3830001",
+      brand: "Nike",
+      size: 9,
+      color: "BLACK/BLACK-MUSLIN",
+      price: 3500,
+      description:
+        "Without a doubt one of the most coveted models in all of Virgil Abloh’s ultra-hyped OFF-WHITE x Nike “THE TEN” collection, the Air Presto is considered by many to be the best shoe of 2017. Coinciding with the look of the rest of Virgil Abloh’s Nike sneakers, the Presto features an “inside out” appearance with an added heel strap, stitched on Swoosh and signature red zip tie. Few shoes are in higher demand right now than the OFF-WHITE Nike Air Presto, so don’t hesitate to pick up your pair while you still can.",
+      stockCount: 3,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/041/246/original/182326_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/041/248/original/182326_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/041/242/original/182326_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/041/243/original/182326_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/070/041/239/original/182326_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "AIR FORCE 1 LOW OFF-WHITE - MCA",
+      sku: "CI1173400",
+      brand: "Nike",
+      size: 12,
+      color: "BLUE/BABY-BLUE",
+      price: 2275,
+      description:
+        "The Off-White x Nike Air Force 1 “MCA” is another highly limited colorway of the iconic silhouette by Virgil Abloh. Released in celebration of Abloh’s career retrospective exhibit at the Museum of Contemporary Art in Chicago, the “MCA” colorway features the same leather construction of the coveted “ComplexCon” and “MoMA” versions of the Off-White x Air Force 1. This time the silhouette receives an eye-catching bright blue hue across the upper and sole, highlighted by metallic silver Swooshes and a red tab and zip tie. The Off-White x Nike Air Force 1 “MCA” released in very limited quantities in June 2019.",
+      stockCount: 1,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/309/672/original/519943_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/309/674/original/519943_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/309/675/original/519943_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/309/686/original/519943_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/309/685/original/519943_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "PUMA MB.01 LAMELO BALL RICK AND MORTY",
+      sku: "37668201",
+      brand: "Puma",
+      size: 9.5,
+      color: "RED/GREEN",
+      price: 160,
+      description:
+        "The Rick and Morty x Puma MB.01 “Mismatched” is a special collaboration between the animated television sitcom and Puma on LaMelo Ball’s first signature shoe. The basketball superstar’s favorite Adult Swim television show, “Rick and Morty,” is immortalized on his debut Puma MB.01 silhouette, and like his play on the hardwood, it warrants serious attention for its flashiness. The collaboration champions a mismatched design aesthetic that pairs a neon green finish on the left shoe with a head-turning bright red hue on the right shoe. “Rick and Morty” branding is found on the toe box and graphics inspired by the shoe appear on the lace overlay. Both the left and right shoe are designed from a lightweight mesh material. Underfoot, Puma’s proprietary Nitro Foam midsole provides a responsive ride. Release date: February 18, 2022.",
+      stockCount: 59,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/906/121/original/893823_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/906/114/original/893823_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/906/123/original/893823_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/906/105/original/893823_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/067/906/101/original/893823_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
+    Product.create({
+      productName: "KYRIE 5 SBSP BT PATRICK",
+      sku: "CJ6951600",
+      brand: "Nike",
+      size: 10,
+      color: "LOTUS PINK/UNIVERSITY RED",
+      price: 199,
+      description:
+        "In collaboration with Nickelodeon for the iconic show's 20th anniversary in August 2019, the SpongeBob SquarePants x Nike Kyrie 5 celebrates Irving's love for the cultural phenomenon. This 'Patrick' edition embodies the starfish's complexion in 'Lotus Pink' mesh with a tonal lace shroud and cratered external heel. A graphic of the character's face is printed on the sockliner. Its vibrant, dual-tone rubber outsole gives a last nod to the bumbling sea star.",
+      stockCount: 11,
+      imageURL: [
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/055/original/517887_01.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/056/original/517887_03.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/059/original/517887_04.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/067/original/517887_06.jpg.jpeg?action=crop&width=2000",
+        "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/071/original/517887_08.jpg.jpeg?action=crop&width=2000",
+      ],
+    }),
   ]);
 
   console.log(`seeded ${users.length} users and ${products.length} products`);
   console.log(`seeded successfully`);
-  // return {
-  //   users: {
-  //     cody: users[0],
-  //     murphy: users[1]
-  //   }
-  // }
 }
 
 /*
