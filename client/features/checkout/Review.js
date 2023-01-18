@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -8,13 +8,17 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { usdFormatter, getShippingCost } from "../../helpers";
 
-const addresses = [
-  "1 Material-UI Drive",
-  "Reactville",
-  "Anytown",
-  "99999",
-  "USA",
-];
+import { useSelector, useDispatch } from "react-redux";
+import { selectAddress, fetchAddressAsync } from "./addressSlice";
+import AddressForm from "./AddressForm";
+
+// const addresses = [
+//   "1 Material-UI Drive",
+//   "Reactville",
+//   "Anytown",
+//   "99999",
+//   "USA",
+// ];
 const payments = [
   { name: "Card type", detail: "Visa" },
   { name: "Card holder", detail: "Mr John Smith" },
@@ -35,7 +39,29 @@ const styles = (theme) => ({
 });
 
 function Review(props) {
+  const dispatch = useDispatch();
+
+  const address = useSelector(selectAddress);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(fetchAddressAsync());
+    };
+    fetchData();
+  }, [dispatch]);
+
   const { classes } = props;
+  const {
+    fName,
+    lName,
+    addressLine1,
+    addressLine2,
+    city,
+    state,
+    zipcode,
+    country,
+  } = address;
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -47,10 +73,10 @@ function Review(props) {
             Shipping
           </Typography>
           <Typography gutterBottom variant="subtitle2">
-            John Smith
+            {`${fName} ${lName}`}
           </Typography>
           <Typography gutterBottom variant="subtitle2">
-            {addresses.join(", ")}
+            {`${addressLine1} ${addressLine2}, ${city}, ${state}, ${zipcode}, ${country}`}
           </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
