@@ -5,25 +5,40 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function UsersCard({ user, onClick }) {
-  const { id, email, firstName, lastName, isAdmin } = user;
+export default function UsersCard({ user }) {
+  const { email, firstName, lastName, isAdmin } = user;
   return (
-    <Card sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <Card
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        textAlign: "center",
+      }}
+    >
       <CardActionArea
         sx={{
           display: "flex",
           flexDirection: "column",
         }}
-        onClick={(e) => onClick(id)}
       >
         <CardContent sx={{ flex: "1 0 auto" }}>
-          <Typography component="div" variant="p" color="primary.dark">
+          <Typography component="div" variant="h6" color="primary.dark">
             {`${firstName} ${lastName}`}
           </Typography>
-          <Typography component="div" variant="p" color="secondary.dark">
+          <Typography
+            component="div"
+            variant="subtitle1"
+            color="secondary.dark"
+          >
             {email}
           </Typography>
-          <Typography component="div" variant="p" color="secondary.dark">
+          <Typography
+            component="div"
+            variant="body2"
+            color="secondary.dark"
+            fontWeight="bold"
+          >
             {isAdmin ? "Admin" : null}
           </Typography>
         </CardContent>
