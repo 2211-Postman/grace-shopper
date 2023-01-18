@@ -67,7 +67,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               onClick={handleOpenNavMenu}
               color="white"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "white" }} />
             </IconButton>
             <Menu
               id="menu-appbar"
