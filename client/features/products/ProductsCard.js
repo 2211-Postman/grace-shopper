@@ -26,7 +26,7 @@ const ProductsCard = ({
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        alignItems: "center",
+        textAlign: "center",
       }}
     >
       <CardActionArea
@@ -46,10 +46,10 @@ const ProductsCard = ({
           <Typography component="div" variant="p" color="grey">
             {brand}
           </Typography>
-          <Typography component="div" variant="p">
+          <Typography component="div" variant="p" fontWeight="bold">
             {productName}
           </Typography>
-          <Typography component="div" variant="p" color="grey">
+          <Typography component="div" variant="subtitle2" color="grey">
             {`${dollar(price)}`}
           </Typography>
         </CardContent>
