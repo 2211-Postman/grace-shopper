@@ -52,7 +52,7 @@ export default function EditCartItemForm({
   return (
     <Fragment>
       <CardActionArea onClick={(e) => handleClickOpen()}>
-        <Typography component="div" variant="p" fontSize="8px">
+        <Typography component="div" variant="p" fontSize="12px">
           {buttonLabel}
         </Typography>
       </CardActionArea>
