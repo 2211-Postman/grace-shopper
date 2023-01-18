@@ -8,7 +8,7 @@ export const fetchUserCart = createAsyncThunk(
     try {
       const token = window.localStorage.getItem(TOKEN);
       if (token) {
-        const { data } = await axios.get(`./api/orders/getCart/${userId}`, {
+        const { data } = await axios.get(`/api/orders/getCart/${userId}`, {
           headers: {
             authorization: token,
           },
@@ -17,7 +17,6 @@ export const fetchUserCart = createAsyncThunk(
       } else {
         return [];
       }
-      return data;
     } catch (err) {
       console.log(err);
     }
@@ -26,14 +25,23 @@ export const fetchUserCart = createAsyncThunk(
 
 export const addToUserCartDB = createAsyncThunk(
   "post user cart",
-  async (userId, product) => {
+  async ({ userId, ...orderDetails }) => {
     try {
-      if (userId) {
-        console.log("useId: ", userId, "product: ", product);
+      const token = window.localStorage.getItem(TOKEN);
+      console.log("userId: ", userId, "product: ", orderDetails);
+      if (token) {
         const { data } = await axios.post(
-          `./api/orders/user/${userId}/${product.id}`
+          `/api/orders/user/${userId}/${orderDetails.id}`,
+          {
+            orderDetails,
+            headers: {
+              authorization: token,
+            },
+          }
         );
         return data;
+      } else {
+        return [];
       }
     } catch (err) {
       console.log(err);
@@ -107,9 +115,6 @@ const cartSlice = createSlice({
       state.products = action.payload;
       state.quantity = state.products.length;
     });
-    // builder.addCase(addToUserCartDB.fulfilled, (state, action) => {
-    //   state.products.push(action.payload);
-    // });
   },
 });
 

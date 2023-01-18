@@ -68,7 +68,7 @@ const Info = ({ product }) => {
     setNumberOfItems(value);
   };
 
-  const handlePurchaseClick = () => {
+  const handlePurchaseClick = async () => {
     const orderDetails = {};
     orderDetails["id"] = product["id"];
     orderDetails["productName"] = product["productName"];
@@ -79,13 +79,13 @@ const Info = ({ product }) => {
     orderDetails["numberOfItems"] = numberOfItems;
     orderDetails["unitPrice"] = product["price"];
     orderDetails["totalPrice"] = numberOfItems * product["price"];
+    orderDetails["userId"] = currentUserId;
     if (qtyInCart) {
+      await dispatch(addToUserCartDB(orderDetails));
       dispatch(addQuantityToCart({ id, numberOfItems }));
-      dispatch(addToUserCartDB(currentUserId, orderDetails));
     } else {
       dispatch(addToCart({ ...orderDetails }));
-      console.log("orderdetails in info", orderDetails);
-      dispatch(addToUserCartDB(currentUserId, orderDetails));
+      await dispatch(addToUserCartDB(orderDetails));
     }
   };
 

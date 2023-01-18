@@ -97,6 +97,7 @@ router.post(
   isAdminOrSelf,
   async (req, res, next) => {
     try {
+      console.log("req.params:", req.params, "req.body:", req.body);
       //grab a user's unfulfilled cart/order or create a new one for them if it doesnt exist
       const [existingCart, isNewCart] = await Order.findOrCreate({
         where: { userId: req.params.userId, purchased: false },
