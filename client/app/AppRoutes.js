@@ -12,7 +12,11 @@ import Cart from "../features/cart/Cart";
 import Checkout from "../features/checkout/Checkout";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
-import { selectCart, fetchUserCart } from "../features/cart/cartSlice";
+import {
+  selectCart,
+  fetchUserCart,
+  addToUserCartDB,
+} from "../features/cart/cartSlice";
 /**
  * COMPONENT
  */
@@ -28,6 +32,11 @@ const AppRoutes = () => {
     const fetchCart = async () => {
       if (currentUserId) {
         await dispatch(fetchUserCart(currentUserId));
+        cartState.products.map(async (item) => {
+          const _item = { ...item };
+          _item["userId"] = currentUserId;
+          await dispatch(addToUserCartDB(_item));
+        });
       }
     };
     fetchCart();
@@ -65,6 +74,7 @@ const AppRoutes = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       ) : (
         <Routes>
