@@ -28,6 +28,8 @@ const Checkout = () => {
   const [addresses, setAddresses] = useState([]);
   const [name, setName] = useState("");
 
+  const [payment, setPayment] = useState([]);
+
   return (
     <Container
       sx={{
@@ -53,6 +55,8 @@ const Checkout = () => {
             setAddresses={setAddresses}
             name={name}
             setName={setName}
+            payment={payment}
+            setPayment={setPayment}
           />
         </Grid>
 

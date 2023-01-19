@@ -8,13 +8,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import { usdFormatter, getShippingCost } from "../../helpers";
 
-const payments = [
-  { name: "Card type", detail: "Visa" },
-  { name: "Card holder", detail: "Mr John Smith" },
-  { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
-  { name: "Expiry date", detail: "04/2024" },
-];
-
 const styles = (theme) => ({
   listItem: {
     padding: `${theme.spacing.unit}px 0`,
@@ -28,7 +21,15 @@ const styles = (theme) => ({
 });
 
 function Review(props) {
-  const { classes, addresses, name } = props;
+  const { classes, addresses, name, payment } = props;
+
+  const payments1 = [
+    { name: "Card type", detail: "Visa" },
+    { name: "Card holder", detail: payment[0] },
+    { name: "Card number", detail: payment[1] },
+    { name: "Expiry date", detail: payment[2] },
+  ];
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -51,16 +52,16 @@ function Review(props) {
             Payment details
           </Typography>
           <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
+            {payments1.map((payments) => (
+              <React.Fragment key={payments.name}>
                 <Grid item xs={6}>
                   <Typography variant="subtitle2" gutterBottom>
-                    {payment.name}
+                    {payments.name}:
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
                   <Typography variant="subtitle2" gutterBottom>
-                    {payment.detail}
+                    {payments.detail}
                   </Typography>
                 </Grid>
               </React.Fragment>
