@@ -12,7 +12,11 @@ import Cart from "../features/cart/Cart";
 import Checkout from "../features/checkout/Checkout";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
-import { selectCart, fetchUserCart } from "../features/cart/cartSlice";
+import {
+  selectCart,
+  fetchUserCart,
+  addToUserCartDB,
+} from "../features/cart/cartSlice";
 /**
  * COMPONENT
  */
@@ -27,11 +31,21 @@ const AppRoutes = () => {
   useEffect(() => {
     const fetchCart = async () => {
       if (currentUserId) {
+        // create or load user cart
+        await dispatch(fetchUserCart(currentUserId));
+        // add any guest cart items to the db
+        cartState.products.map(async (item) => {
+          const _item = { ...item };
+          _item["userId"] = currentUserId;
+          await dispatch(addToUserCartDB(_item));
+        });
+
+        // finally load user cart again with guest items included
         await dispatch(fetchUserCart(currentUserId));
       }
     };
     fetchCart();
-  }, [dispatch, currentUserId]);
+  }, [dispatch, currentUserId, cartState]);
 
   const cartState = useSelector(selectCart);
 
