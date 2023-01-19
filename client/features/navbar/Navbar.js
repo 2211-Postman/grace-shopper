@@ -16,7 +16,7 @@ const Navbar = () => {
   const cartLabel = itemsInCart ? `Cart (${itemsInCart})` : "Cart";
 
   // Create page list for navbar
-  let pages = ["Shop", "cart"];
+  let pages = ["cart"];
   if (isLoggedIn) pages = pages.concat(["logout"]);
   else pages = pages.concat(["login", "signup"]);
   if (isAdmin) pages = ["users"].concat(pages);

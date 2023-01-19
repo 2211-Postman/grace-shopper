@@ -16,6 +16,18 @@ import { Link } from "@mui/material";
 
 import { logout } from "../../app/store";
 import { emptyCart } from "../cart/cartSlice";
+import { makeStyles } from "@material-ui/core/styles";
+import StoreIcon from "@mui/icons-material/Store";
+
+const useStyles = makeStyles((theme) => ({
+  shopButton: {
+    color: "white",
+    marginLeft: theme.spacing(2),
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+}));
 
 function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
   const dispatch = useDispatch();
@@ -36,6 +48,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
     dispatch(logout());
     navigate("/login");
   };
+  const classes = useStyles();
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "black" }}>
@@ -67,7 +80,11 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               onClick={handleOpenNavMenu}
               color="white"
             >
-              <MenuIcon sx={{ color: "white" }} />
+              <MenuIcon
+                sx={{
+                  color: "white",
+                }}
+              />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -87,15 +104,17 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <IconButton
+                className={classes.shopButton}
+                aria-label="shop"
+                onClick={() => navigate("/shop")}
+              >
+                <StoreIcon sx={{ color: "black" }} />
+              </IconButton>
               {pages.map((page, i) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {page === "logout" ? (
-                    <div
-                      type="button"
-                      onClick={logoutAndRedirectHome}
-                      container
-                      justify="flex-end"
-                    >
+                    <div type="button" onClick={logoutAndRedirectHome}>
                       Logout
                     </div>
                   ) : (
@@ -131,6 +150,13 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             justifyContent="flex-end"
           >
+            <IconButton
+              className={classes.shopButton}
+              aria-label="shop"
+              onClick={() => navigate("/shop")}
+            >
+              <StoreIcon sx={{ color: "white" }} />
+            </IconButton>
             {pages.map((page, i) => (
               <Button
                 key={page}
