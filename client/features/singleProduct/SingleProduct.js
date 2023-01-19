@@ -37,7 +37,7 @@ const SingleProduct = () => {
         <Grid
           container
           spacing={5}
-          style={{ maxWidth: 1100, margin: "0 auto" }}
+          style={{ width: "100%", height: "100%", overflow: "auto" }}
         >
           <Grid item sm={1}>
             <ImageGrid

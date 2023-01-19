@@ -48,14 +48,22 @@ const styles = (theme) => ({
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-function getStepContent(step, addresses, setAddresses, name, setName) {
+function getStepContent(
+  step,
+  addresses,
+  setAddresses,
+  name,
+  setName,
+  payment,
+  setPayment
+) {
   switch (step) {
     case 0:
       return <AddressForm setAddresses={setAddresses} setName={setName} />;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm setPayment={setPayment} />;
     case 2:
-      return <Review addresses={addresses} name={name} />;
+      return <Review addresses={addresses} name={name} payment={payment} />;
     default:
       throw new Error("Unknown step");
   }
@@ -96,6 +104,8 @@ class CheckoutCard extends React.Component {
       setAddresses,
       name,
       setName,
+      payment,
+      setPayment,
     } = this.props;
     const { activeStep } = this.state;
 
@@ -136,7 +146,9 @@ class CheckoutCard extends React.Component {
                     addresses,
                     setAddresses,
                     name,
-                    setName
+                    setName,
+                    payment,
+                    setPayment
                   )}
                   <div className={classes.buttons}>
                     {activeStep !== 0 && (
