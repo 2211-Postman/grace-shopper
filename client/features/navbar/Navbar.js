@@ -17,7 +17,7 @@ const Navbar = () => {
 
   // Create page list for navbar
   let pages = ["Shop", "cart"];
-  if (isLoggedIn) pages = pages.concat(["logout"]);
+  if (isLoggedIn) pages = pages.concat(["history", "logout"]);
   else pages = pages.concat(["login", "signup"]);
   if (isAdmin) pages = ["users"].concat(pages);
 

@@ -10,6 +10,7 @@ import Products from "../features/products/Products";
 import Users from "../features/users/Users";
 import Cart from "../features/cart/Cart";
 import Checkout from "../features/checkout/Checkout";
+import History from "../features/orderHistory/orderHistory";
 import { me } from "./store";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import { selectCart, fetchUserCart } from "../features/cart/cartSlice";
@@ -58,6 +59,7 @@ const AppRoutes = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       ) : isLoggedIn && !isAdmin ? (
         <Routes>
@@ -66,6 +68,7 @@ const AppRoutes = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       ) : (
         <Routes>

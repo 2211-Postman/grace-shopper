@@ -51,7 +51,6 @@ export const removeFromCartDBAsync = createAsyncThunk(
   async (orderDetailsId) => {
     try {
       const token = window.localStorage.getItem(TOKEN);
-      console.log("token in slice", token);
       if (token) {
         await axios.delete(`/api/orders/orderDetails/${orderDetailsId}`, {
           headers: {
