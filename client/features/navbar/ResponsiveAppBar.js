@@ -67,7 +67,7 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               onClick={handleOpenNavMenu}
               color="white"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "white" }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -90,7 +90,12 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               {pages.map((page, i) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {page === "logout" ? (
-                    <div type="button" onClick={logoutAndRedirectHome}>
+                    <div
+                      type="button"
+                      onClick={logoutAndRedirectHome}
+                      container
+                      justify="flex-end"
+                    >
                       Logout
                     </div>
                   ) : (
@@ -122,7 +127,10 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
           >
             {homeTitle}
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            justifyContent="flex-end"
+          >
             {pages.map((page, i) => (
               <Button
                 key={page}

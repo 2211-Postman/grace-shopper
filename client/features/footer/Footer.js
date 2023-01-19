@@ -9,7 +9,11 @@ function Copyright() {
   return (
     <Typography variant="body2" color="grey" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/2211-Postman">
+      <Link
+        color="inherit"
+        href="https://github.com/2211-Postman"
+        target="_blank"
+      >
         Desgined by PostMen
       </Link>{" "}
       {new Date().getFullYear()}
