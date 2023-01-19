@@ -66,7 +66,7 @@ function AddressForm({ setAddresses, setName }) {
             name="firstName"
             label="First name"
             fullWidth
-            autoComplete="fname"
+            autoComplete="first name"
             onChange={handleFirstNameChange}
           />
         </Grid>
@@ -77,7 +77,7 @@ function AddressForm({ setAddresses, setName }) {
             name="lastName"
             label="Last name"
             fullWidth
-            autoComplete="lname"
+            autoComplete="last name"
             onChange={handleLastNameChange}
           />
         </Grid>
