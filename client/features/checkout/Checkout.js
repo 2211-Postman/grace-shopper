@@ -45,7 +45,7 @@ const Checkout = () => {
       </Typography>
 
       <Grid container spacing={3} columns={2}>
-        <Grid item xs={2} sm={1} md={1}>
+        <Grid item xs={2} sm={2} md={1}>
           <CheckoutCard
             orderId={orderId}
             placeOrder={placeOrder}
@@ -56,7 +56,7 @@ const Checkout = () => {
           />
         </Grid>
 
-        <Grid item xs={2} sm={1} md={1}>
+        <Grid item xs={2} sm={2} md={1}>
           <CheckoutReview cart={cart} />
           <Stack>
             {cart && cart.products && cart.products.length
