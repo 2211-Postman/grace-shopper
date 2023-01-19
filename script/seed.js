@@ -656,6 +656,23 @@ async function seed() {
         "https://imgur.com/Id2NhsW.jpeg",
       ],
     }),
+    Product.create({
+      productName: "GAME WORN (NOT BY KOBE) - KOBE AD",
+      sku: "youdontwantthese",
+      brand: "NIKE",
+      size: "9.5",
+      color: "DIRTY RED",
+      price: "10",
+      description: "The treads are bald like my 86' Corolla",
+      stockCount: "1",
+      imageURL: [
+        "https://i.imgur.com/Ic3d3F5.jpg",
+        "https://i.imgur.com/jTrhZOS.jpg",
+        "https://i.imgur.com/VVLKTLX.jpg",
+        "https://i.imgur.com/FVIzuef.jpg",
+        "https://i.imgur.com/XfmtGMI.jpg",
+      ],
+    }),
   ]);
 
   //sample orders
