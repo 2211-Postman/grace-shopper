@@ -622,6 +622,40 @@ async function seed() {
         "https://image.goat.com/transform/v1/attachments/product_template_additional_pictures/images/079/325/071/original/517887_08.jpg.jpeg?action=crop&width=2000",
       ],
     }),
+    Product.create({
+      productName: "AIR DOGS 1 OFF-WHITE",
+      sku: "youCantAffordThese",
+      brand: "Air Jordan",
+      size: 10,
+      color: "GOLDEN",
+      price: 1000000,
+      description:
+        "The Only Real Dog Sneaker. Made from the same materials as premium human sneakers. DISCLAIMER: CUTE DOG NOT INCLUDED",
+      stockCount: 1,
+      imageURL: [
+        "https://i.imgur.com/M3vD08x.jpg",
+        "https://i.imgur.com/C0qGXZp.jpeg",
+        "https://i.imgur.com/1bBUsfb.jpeg",
+      ],
+    }),
+    Product.create({
+      productName: "STAN SMITH CUSTOM MADE LEFTY GUITAR, ONE OF A KIND",
+      sku: "yOuWiShYoUhAdThEm",
+      brand: "ADIDAS",
+      size: 7,
+      color: "WHITE/PURPLE GUITAR MAGIC",
+      price: 1000000,
+      description:
+        "'Soles by Sir' create custom sneakers for professional athletes and anyone who desires his expertise. Painting custom cleats began with a custom pair of Nikes he did for a Valentine's Day gift. He began with painting for 1 player to now painting for roughly 450 players. He works alongside NFL, MLB, and NBA players and their affiliate. These custom Stand Smith Lefty Guitar inspired were made just for Robert David West",
+      stockCount: 1,
+      imageURL: [
+        "https://imgur.com/2WQ7msz.jpeg",
+        "https://imgur.com/Dd9Rorz.jpeg",
+        "https://imgur.com/pcGEj9E.jpeg",
+        "https://imgur.com/0xAZnjo.jpeg",
+        "https://imgur.com/Id2NhsW.jpeg",
+      ],
+    }),
   ]);
 
   //sample orders
