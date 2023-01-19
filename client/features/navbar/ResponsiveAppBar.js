@@ -18,6 +18,7 @@ import { logout } from "../../app/store";
 import { emptyCart } from "../cart/cartSlice";
 import { makeStyles } from "@material-ui/core/styles";
 import StoreIcon from "@mui/icons-material/Store";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const useStyles = makeStyles((theme) => ({
   shopButton: {
@@ -111,6 +112,13 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               >
                 <StoreIcon sx={{ color: "black" }} />
               </IconButton>
+              <IconButton
+                className={classes.cartButton}
+                aria-label="cart"
+                onClick={() => navigate("/cart")}
+              >
+                <ShoppingCartIcon sx={{ color: "black" }} />
+              </IconButton>
               {pages.map((page, i) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {page === "logout" ? (
@@ -156,6 +164,13 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               onClick={() => navigate("/shop")}
             >
               <StoreIcon sx={{ color: "white" }} />
+            </IconButton>
+            <IconButton
+              className={classes.cartButton}
+              aria-label="cart"
+              onClick={() => navigate("/cart")}
+            >
+              <ShoppingCartIcon sx={{ color: "white" }} />
             </IconButton>
             {pages.map((page, i) => (
               <Button
