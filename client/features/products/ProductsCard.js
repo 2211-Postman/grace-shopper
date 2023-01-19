@@ -25,6 +25,7 @@ const ProductsCard = ({
       sx={{
         display: "flex",
         flexDirection: "column",
+        width: "100%",
         height: "100%",
         textAlign: "center",
         alignItems: "center",
@@ -39,7 +40,11 @@ const ProductsCard = ({
       >
         <CardMedia
           component="img"
-          sx={{ width: 200 }}
+          sx={{
+            width: "200px",
+            height: "150px",
+            objectFit: "scale-down",
+          }}
           image={imageURL[0]}
           alt="Sneaker Photo"
         />
