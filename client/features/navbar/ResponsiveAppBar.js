@@ -16,6 +16,19 @@ import { Link } from "@mui/material";
 
 import { logout } from "../../app/store";
 import { emptyCart } from "../cart/cartSlice";
+import { makeStyles } from "@material-ui/core/styles";
+import StoreIcon from "@mui/icons-material/Store";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+const useStyles = makeStyles((theme) => ({
+  shopButton: {
+    color: "white",
+    marginLeft: theme.spacing(2),
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+}));
 
 function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
   const dispatch = useDispatch();
@@ -36,6 +49,8 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
     dispatch(logout());
     navigate("/login");
   };
+
+  const classes = useStyles();
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "black" }}>
@@ -87,24 +102,36 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <IconButton
+                className={classes.shopButton}
+                aria-label="shop"
+                onClick={() => navigate("/shop")}
+              >
+                <StoreIcon sx={{ color: "black" }} />
+              </IconButton>
+              <IconButton
+                className={classes.cartButton}
+                aria-label="cart"
+                onClick={() => navigate("/cart")}
+              >
+                <ShoppingCartIcon sx={{ color: "black" }} />
+              </IconButton>
               {pages.map((page, i) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   {page === "logout" ? (
                     <div
-                      type="button"
-                      onClick={logoutAndRedirectHome}
                       container
                       justify="flex-end"
+                      onClick={logoutAndRedirectHome}
                     >
                       Logout
                     </div>
                   ) : (
-                    <Typography textAlign="center">
-                      {pageLabels[i]}
-                      <Link color="white" underline="hover" href={`/${page}`}>
+                    <Link color="black" underline="hover" href={`/${page}`}>
+                      <Typography textAlign="center">
                         {pageLabels[i]}
-                      </Link>
-                    </Typography>
+                      </Typography>
+                    </Link>
                   )}
                 </MenuItem>
               ))}
@@ -131,6 +158,20 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             justifyContent="flex-end"
           >
+            <IconButton
+              className={classes.shopButton}
+              aria-label="shop"
+              onClick={() => navigate("/shop")}
+            >
+              <StoreIcon sx={{ color: "white" }} />
+            </IconButton>
+            <IconButton
+              className={classes.cartButton}
+              aria-label="cart"
+              onClick={() => navigate("/cart")}
+            >
+              <ShoppingCartIcon sx={{ color: "white" }} />
+            </IconButton>
             {pages.map((page, i) => (
               <Button
                 key={page}
@@ -140,7 +181,16 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                 {page === "logout" ? (
                   <div onClick={logoutAndRedirectHome}>Logout</div>
                 ) : (
-                  <Link color="white" underline="hover" href={`/${page}`}>
+                  <Link
+                    color="white"
+                    underline="hover"
+                    href={`/${page}`}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyItems: "speace-evenly",
+                    }}
+                  >
                     {pageLabels[i]}
                   </Link>
                 )}
