@@ -32,6 +32,7 @@ const Navbar = () => {
       pages={pages}
       pageLabels={pageLabels}
       homeTitle={homeTitle}
+      itemsInCart={itemsInCart}
     />
   );
 };
