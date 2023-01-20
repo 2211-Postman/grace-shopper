@@ -12,7 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "@mui/material";
+import { Link, Badge } from "@mui/material";
 
 import { logout } from "../../app/store";
 import { emptyCart } from "../cart/cartSlice";
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
+function ResponsiveAppBar({ pages, pageLabels, homeTitle, itemsInCart }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -114,7 +114,14 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
                 aria-label="cart"
                 onClick={() => navigate("/cart")}
               >
-                <ShoppingCartIcon sx={{ color: "black" }} />
+                <Badge
+                  aria-label={itemsInCart}
+                  badgeContent={itemsInCart}
+                  max={99}
+                  color="primary"
+                >
+                  <ShoppingCartIcon sx={{ color: "black" }} />
+                </Badge>
               </IconButton>
               {pages.map((page, i) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -170,7 +177,14 @@ function ResponsiveAppBar({ pages, pageLabels, homeTitle }) {
               aria-label="cart"
               onClick={() => navigate("/cart")}
             >
-              <ShoppingCartIcon sx={{ color: "white" }} />
+              <Badge
+                aria-label={itemsInCart}
+                badgeContent={itemsInCart}
+                max={99}
+                color="primary"
+              >
+                <ShoppingCartIcon sx={{ color: "white" }} />
+              </Badge>
             </IconButton>
             {pages.map((page, i) => (
               <Button
