@@ -6,9 +6,8 @@ Sole Quest is an E-commerce site that sells the most limited and exlusive sneake
 
 <img width="1571" alt="Sole_Quest_Homepage" src="https://user-images.githubusercontent.com/113927218/213600593-c62794d6-d6ce-419f-b853-8fb4180c9487.png">
 <img width="1559" alt="product_page" src="https://user-images.githubusercontent.com/113927218/213600930-9a62df78-e920-480a-8cf7-9d4574930d1e.png">
-<img width="1526" alt="shopping_cart" src="https://user-images.githubusercontent.com/113927218/213600932-e22740e8-b4d6-43fe-8cfd-c60808942482.png">
-<img width="1521" alt="checkout" src="https://user-images.githubusercontent.com/113927218/213600938-c7c8ab42-8bfd-442b-a1ff-73a660c828cb.png">
-
+<img width="1554" alt="cart" src="https://user-images.githubusercontent.com/113927218/213611722-b598de23-40fa-4319-a61d-6be071e64ae4.png">
+<img width="1518" alt="checkout" src="https://user-images.githubusercontent.com/113927218/213611727-caa917df-ed13-4e4f-a5b5-58eac80b5cf3.png">
 
 LinkedIn:
 <a href='https://www.linkedin.com/in/wachan/'>Warren Chan</a> |
