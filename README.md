@@ -1,5 +1,5 @@
 ## <a href='https://grace-shopper-f0gv.onrender.com/'>Sole Quest</a>
-<p>     by <a href='https://github.com/warrenchan13'>Warren Chan</a>, <a href='https://github.com/robertdavidwest'>Robert West</a>, and <a href='https://github.com/SNLTING'>Sam Ting</a>,<a href='https://github.com/jahedprince'>Jahed Prince</a> </p>
+<p>     by <a href='https://github.com/warrenchan13'>Warren Chan</a>, <a href='https://github.com/robertdavidwest'>Robert West</a>, <a href='https://github.com/SNLTING'>Sam Ting</a>, and <a href='https://github.com/jahedprince'>Jahed Prince</a> </p>
 
 LinkedIn:
 <a href='https://www.linkedin.com/in/wachan/'>Warren Chan</a> |
