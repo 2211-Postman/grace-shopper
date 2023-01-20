@@ -22,10 +22,10 @@ const getQtyInCart = (id, cart) => {
 };
 
 const getErrMsg = (stockCount, qtyInCart) => {
-  const isAre = stockCount === 1 ? "is" : "are";
-  let errMsg = `There ${isAre} only ${stockCount} unit(s) of this sneaker left in stock`;
+  const isAre = stockCount === 1 ? "was" : "were";
+  let errMsg = `Sorry, there ${isAre} only ${stockCount} unit(s) of this sneaker in stock!`;
   if (qtyInCart) {
-    errMsg = `You have ${qtyInCart} unit(s) in your cart. ` + errMsg;
+    errMsg = `You already have ${qtyInCart} unit(s) in your cart. ` + errMsg;
   }
   return errMsg;
 };
